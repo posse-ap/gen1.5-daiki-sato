@@ -11,11 +11,11 @@ try {
   exit();
 }
 
-$sql_article = 
+$sql_questions = 
 'SELECT * 
-FROM article';
-$article = $db->query($sql_article)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_UNIQUE);
+FROM questions';
+$questions = $db->query($sql_questions)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_UNIQUE);
 
-print_r($article);
+print_r($questions);
 
 // SELECT * FROM article JOIN main_text ON article.text_id = main_text.id;
