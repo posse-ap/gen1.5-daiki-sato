@@ -11,11 +11,24 @@ try {
   exit();
 }
 
-$sql_questions = 
-'SELECT * 
-FROM questions';
-$questions = $db->query($sql_questions)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_UNIQUE);
+// $sql_questions = 
+// 'SELECT * 
+// FROM questions';
+// $questions = $db->query($sql_questions)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_UNIQUE);
 
-print_r($questions);
+
+if(isset($_GET['id'])) {
+  $id = $_GET['id'];
+  $selected_value =  "SELECT * FROM questions WHERE id = $id";
+  $value = $db->query($selected_value)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_UNIQUE);
+}
+
+echo($value[$id]["name"]);
+
+
+
+
+
+
 
 // SELECT * FROM article JOIN main_text ON article.text_id = main_text.id;
