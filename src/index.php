@@ -18,4 +18,4 @@ $article = $db->query($sql_article)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_UNIQUE
 
 print_r($article);
 
-// // SELECT * FROM article JOIN main_text ON article.text_id = main_text.id;
+// SELECT * FROM article JOIN main_text ON article.text_id = main_text.id;
