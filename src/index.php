@@ -11,24 +11,57 @@ try {
   exit();
 }
 
-// $sql_questions = 
-// 'SELECT * 
-// FROM questions';
-// $questions = $db->query($sql_questions)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_UNIQUE);
-
-
+// questions
 if(isset($_GET['id'])) {
   $id = $_GET['id'];
-  $selected_value =  "SELECT * FROM questions WHERE id = $id";
-  $value = $db->query($selected_value)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_UNIQUE);
+  $questions_value =  "SELECT * FROM questions WHERE id = $id";
+  $questions = $db->query($questions_value)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_UNIQUE);
 }
+echo($questions[$id]["name"]);
 
-echo($value[$id]["name"]);
+// choices
+if(isset($_GET['id'])) {
+  $id = $_GET['id'];
+  $choices_value =  "SELECT * FROM choices WHERE question_id = $id";
+  $choices = $db->query($choices_value)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_UNIQUE);
+}
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>くいじー</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<div class="question">
+  <h1 class="question__title">
+    <?php // 問題番号動的 TODO:コード汚いので後できれいにする
+      foreach ($choices as $choice) {
+        echo($choice['question_id']);
+        if($choice == $choice){
+          break;
+        }
+      } 
+    ?> 
+    .この地名はなんて読む？
+  </h1>
 
 
+  <img class="question__img" src="./img/<?php echo $id ?>.png" alt="選択肢の写真">
 
+  <ul class="question__lists" id="">
+      <?php foreach ( $choices as $choice ) { ?>
+      <li class="question__list"><?php echo $choice['name'];?></li>
+      <?php  
+      }?>
+  </ul>
+</div>
 
-
-
-
-// SELECT * FROM article JOIN main_text ON article.text_id = main_text.id;
+<script src="./js/index.js"></script>
+</body>
+</html>
