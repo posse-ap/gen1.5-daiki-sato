@@ -26,18 +26,6 @@ if(isset($_GET['id'])) {
   $choices = $db->query($choices_value)->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_UNIQUE);
 }
 
-// 問題番号動的 TODO:コード汚いので後できれいにする
-foreach ($choices as $choice) {
-  print_r($choice['question_id']);
-  if($choice == $choice){
-    break;
-  }
-}
-
-
-
-
-
 
 ?>
 
@@ -51,7 +39,23 @@ foreach ($choices as $choice) {
 </head>
 <body>
 
-<h1><?php echo($choices[$id]); ?> .この地名はなんて読む？</h1>
+<h1>
+  <?php // 問題番号動的 TODO:コード汚いので後できれいにする
+    foreach ($choices as $choice) {
+      echo($choice['question_id']);
+      if($choice == $choice){
+        break;
+      }
+    } 
+  ?> 
+  .この地名はなんて読む？
+</h1>
+
+
+<img src="./img/<?php echo $id ?>.png" alt="">
+
+
   
+
 </body>
 </html>
