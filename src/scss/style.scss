@@ -13,7 +13,7 @@
     font-weight: 600;
     display: inline-block;
 
-    &::after{
+    &::after {
       display: block;
       margin-top: 10px;
       width: 120px;
@@ -39,6 +39,16 @@
     margin: 10px 0;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 3px 2px -2px rgb(0 0 0 / 13%);
+    box-shadow: 0 2px 5px -2px #5e5e5e;
   }
+}
+
+.succeeded {
+  background-color: #287dff;
+  color: #fff;
+}
+
+.failed {
+  background: #ff5128;
+  color: #fff;
 }
