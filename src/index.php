@@ -27,6 +27,8 @@ if(isset($_GET['id'])) {
 }
 
 
+// print_r($choices);
+
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +56,12 @@ if(isset($_GET['id'])) {
 
 <img src="./img/<?php echo $id ?>.png" alt="">
 
+<ul>
+    <?php foreach ( $choices as $choice ) { ?>
+    <li><?php echo $choice['name'];?></li>
+    <?php  
+    }?>
+</ul>
 
   
 
