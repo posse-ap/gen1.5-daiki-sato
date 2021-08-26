@@ -54,7 +54,7 @@ if(isset($_GET['id'])) {
 
   <img class="question__img" src="./img/<?php echo $id ?>.png" alt="選択肢の写真">
 
-  <ul class="question__lists">
+  <ul class="question__lists" id="">
       <?php foreach ( $choices as $choice ) { ?>
       <li class="question__list"><?php echo $choice['name'];?></li>
       <?php  
