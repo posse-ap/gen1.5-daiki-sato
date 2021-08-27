@@ -469,7 +469,7 @@ template {
   max-width: 620px;
   color: #031831;
   margin: 0 auto;
-  margin: 15px;
+  margin-top: 150px;
 }
 
 .question__title {
@@ -508,6 +508,23 @@ template {
           box-shadow: 0 2px 5px -2px #5e5e5e;
 }
 
+.question__answer {
+  display: none;
+  background: #f5f5f5;
+  padding: 17px;
+  border-radius: 3px;
+}
+
+.question__answer__text {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+  display: inline-block;
+  border-bottom: 3px solid #287dff;
+}
+
 .succeeded {
   background-color: #287dff;
   color: #fff;
@@ -516,5 +533,17 @@ template {
 .failed {
   background: #ff5128;
   color: #fff;
+}
+
+.cant_click {
+  pointer-events: none;
+}
+
+.show {
+  display: block;
+}
+
+.fail_answer_text {
+  border-bottom: 3px solid #ff5128;
 }
 /*# sourceMappingURL=style.css.map */
