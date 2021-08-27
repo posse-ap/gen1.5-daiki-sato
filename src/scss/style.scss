@@ -41,8 +41,27 @@
     cursor: pointer;
     box-shadow: 0 2px 5px -2px #5e5e5e;
   }
+
+  &__answer {
+    display: none;
+    background: #f5f5f5;
+    padding: 17px;
+    border-radius: 3px;
+
+    &__text {
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 600;
+      padding-bottom: 3px;
+      margin-bottom: 10px;
+      display: inline-block;
+      border-bottom: 3px solid #287dff;
+    }
+  }
 }
 
+
+// js用
 .succeeded {
   background-color: #287dff;
   color: #fff;
@@ -51,4 +70,16 @@
 .failed {
   background: #ff5128;
   color: #fff;
+}
+
+.cant_click {
+  pointer-events: none;
+}
+
+.show {
+  display: block;
+}
+
+.fail_answer_text{
+  border-bottom: 3px solid #ff5128;
 }
