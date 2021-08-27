@@ -504,5 +504,17 @@ template {
   margin: 10px 0;
   font-weight: 600;
   cursor: pointer;
+  -webkit-box-shadow: 0 2px 5px -2px #5e5e5e;
+          box-shadow: 0 2px 5px -2px #5e5e5e;
+}
+
+.succeeded {
+  background-color: #287dff;
+  color: #fff;
+}
+
+.failed {
+  background: #ff5128;
+  color: #fff;
 }
 /*# sourceMappingURL=style.css.map */

@@ -54,14 +54,16 @@ if(isset($_GET['id'])) {
 
   <img class="question__img" src="./img/<?php echo $id ?>.png" alt="選択肢の写真">
 
-  <ul class="question__lists" id="">
+  <ul class="question__lists">
       <?php foreach ( $choices as $choice ) { ?>
-      <li class="question__list"><?php echo $choice['name'];?></li>
+      <li class="question__list question__list__<?php echo $choice['valid'] ?>"><?php echo $choice['name'];?></li>
       <?php  
       }?>
   </ul>
 </div>
 
+<!-- jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="./js/index.js"></script>
 </body>
 </html>
