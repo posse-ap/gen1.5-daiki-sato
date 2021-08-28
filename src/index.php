@@ -1,15 +1,7 @@
 <?php
-$dsn = 'mysql:host=db;dbname=ph2_quizy;charset=utf8mb4;';
-$user = 'daiki';
-$password = 'pass';
+include("include/db_connect.php");
+include("include/components/molecules/article.php");
 
-try {
-  $db = new PDO($dsn, $user, $password);
-  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-  echo '接続失敗: ' . $e->getMessage();
-  exit();
-}
 
 // questions
 if (isset($_GET['id'])) {
@@ -43,43 +35,12 @@ if (isset($_GET['id'])) {
 
 <body>
 
-  <div class="question">
-    <h1 class="question__title">
-      <?php // 問題番号動的 TODO:コード汚いので後できれいにする
-      foreach ($choices as $choice) {
-        echo ($choice['question_id']);
-        if ($choice == $choice) {
-          break;
-        }
-      }
-      ?>
-      .この地名はなんて読む？
-    </h1>
 
 
-    <img class="question__img" src="./img/<?php echo $id ?>.png" alt="選択肢の写真">
+  <?php createArticle($questions); ?>
 
-    <ul class="question__lists">
-      <?php foreach ($choices as $index => $choice) { ?>
-        <li class="question__list">
-          <?php echo $choice['name']; ?>
-        </li>
-      <?php
-      } ?>
-    </ul>
 
-    <div class="question__answer">
-      <p class="question__answer__text">正解！</p>
-      <p class="question__answer__text__choice">
-        正解は
-        <?php foreach ($corrects as $correct) {
-          echo ($correct['name']); 
-        }?>
-        です！
-      </p>
-    </div>
 
-  </div>
 
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

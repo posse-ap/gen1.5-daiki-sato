@@ -83,3 +83,20 @@
 .fail_answer_text{
   border-bottom: 3px solid #ff5128;
 }
+
+
+.article{
+  background-color: red;
+  width: 30%;
+
+
+  &__title{
+    font-size: 24px;
+  }
+
+  &__text{
+    font-size: 14px;
+  }
+
+
+}

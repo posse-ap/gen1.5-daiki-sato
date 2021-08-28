@@ -546,4 +546,17 @@ template {
 .fail_answer_text {
   border-bottom: 3px solid #ff5128;
 }
+
+.article {
+  background-color: red;
+  width: 30%;
+}
+
+.article__title {
+  font-size: 24px;
+}
+
+.article__text {
+  font-size: 14px;
+}
 /*# sourceMappingURL=style.css.map */
