@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
 }
 echo ($questions[$id]["name"]);
 
-// choices
+// / / choices
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
   $choices_value =  "SELECT * FROM choices WHERE question_id = $id";
