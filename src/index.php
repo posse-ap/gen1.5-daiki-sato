@@ -32,7 +32,6 @@ if (isset($_GET['id'])) {
 
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,10 +39,7 @@ if (isset($_GET['id'])) {
   <title>くいじー</title>
   <link rel="stylesheet" href="./css/style.css">
 </head>
-
-
 <body>
-
   <div class="question">
     <h1 class="question__title">
       <?php // 問題番号動的 TODO:コード汚いので後できれいにする
@@ -56,13 +52,10 @@ if (isset($_GET['id'])) {
       ?>
       .この地名はなんて読む？
     </h1>
-
-
     <img class="question__img" src="./img/<?php echo $id ?>.png" alt="選択肢の写真">
-
     <ul class="question__lists">
       <?php foreach ($choices as $index => $choice) { ?>
-        <li class="question__list">
+        <li class="question__list <?= $choice['valid'] ?>" id="<?php if ($choice['valid'] == 1) {echo 1;}?>">
           <?php echo $choice['name']; ?>
         </li>
       <?php

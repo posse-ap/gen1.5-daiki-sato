@@ -1,6 +1,6 @@
-DROP SCHEMA IF EXISTS p2_quizy;
-CREATE SCHEMA p2_quizy;
-USE p2_quizy;
+DROP SCHEMA IF EXISTS ph2_quizy;
+CREATE SCHEMA ph2_quizy;
+USE ph2_quizy;
 
 -- questionsテーブル
 DROP TABLE IF EXISTS `questions`;
