@@ -41,6 +41,7 @@ if (isset($_GET['id'])) {
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
+
 <body>
 
   <div class="question">
