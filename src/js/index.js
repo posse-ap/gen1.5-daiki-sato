@@ -82,3 +82,20 @@ $('.question__list').click(function clickAction() {
     }
 
 });
+
+
+
+/*
+    TODO:
+    正解の値をとってくる
+    不正解の値をとってくる
+    不正解の値のクリックされた値を持ってくる
+*/
+
+// methods: {
+//     btnClicked(e) {
+
+//         let id = e.currentTarget.getAttribute('data-id')
+
+//     }
+// },

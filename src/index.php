@@ -55,7 +55,7 @@ if (isset($_GET['id'])) {
     <img class="question__img" src="./img/<?php echo $id ?>.png" alt="選択肢の写真">
     <ul class="question__lists">
       <?php foreach ($choices as $index => $choice) { ?>
-        <li class="question__list <?= $choice['valid'] ?>" id="<?php if ($choice['valid'] == 1) {echo 1;}?>">
+        <li class="question__list" data-quizy="<?php if ($choice['valid'] == 1) {echo 1;}else{echo 2;}?>">
           <?php echo $choice['name']; ?>
         </li>
       <?php
