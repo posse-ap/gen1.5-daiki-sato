@@ -99,3 +99,6 @@ $('.question__list').click(function clickAction() {
 
 //     }
 // },
+
+const correct = $('.question__list').data('1');
+console.log(correct);
