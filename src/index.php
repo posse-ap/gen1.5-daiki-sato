@@ -1,15 +1,4 @@
-<?php
-$dsn = 'mysql:host=db;dbname=ph2_quizy;charset=utf8mb4;';
-$user = 'daiki';
-$password = 'pass';
-
-try {
-  $db = new PDO($dsn, $user, $password);
-  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-  echo '接続失敗: ' . $e->getMessage();
-  exit();
-}
+<?php include($_SERVER['DOCUMENT_ROOT'] . "/db_connect.php");
 
 // questions
 if (isset($_GET['id'])) {
@@ -32,6 +21,7 @@ if (isset($_GET['id'])) {
 
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,42 +29,44 @@ if (isset($_GET['id'])) {
   <title>くいじー</title>
   <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
   <div class="question">
-    <h1 class="question__title">
-      <?php // 問題番号動的 TODO:コード汚いので後できれいにする
-      foreach ($choices as $choice) {
-        echo ($choice['question_id']);
-        if ($choice == $choice) {
-          break;
+    <?php
+    if (isset($_GET['id'])) { ?>
+      <h1 class="question__title">
+        <?php // 問題番号動的 TODO:コード汚いので後できれいにする
+        foreach ($choices as $choice) {
+          echo ($choice['question_id']);
+          if ($choice == $choice) {
+            break;
+          }
         }
-      }
-      ?>
-      .この地名はなんて読む？
-    </h1>
-    <img class="question__img" src="./img/<?php echo $id ?>.png" alt="選択肢の写真">
-    <ul class="question__lists">
-      <?php foreach ($choices as $index => $choice) { ?>
-        <li class="question__list <?= $choice['valid'] ?>" id="<?php if ($choice['valid'] == 1) {echo 1;}?>">
-          <?php echo $choice['name']; ?>
-        </li>
-      <?php
-      } ?>
-    </ul>
-
-    <div class="question__answer">
-      <p class="question__answer__text">正解！</p>
-      <p class="question__answer__text__choice">
-        正解は
-        <?php foreach ($corrects as $correct) {
-          echo ($correct['name']); 
-        }?>
-        です！
-      </p>
-    </div>
-
-  </div>
-
+        ?>
+        .この地名はなんて読む？
+      </h1>
+      <img class="question__img" src="./img/<?php echo $id ?>.png" alt="選択肢の写真">
+      <ul class="question__lists">
+        <?php foreach ($choices as $index => $choice) { ?>
+          <li class="question__list <?php if ($choice['valid'] == 1) {echo 1;} else {echo 0;} ?>">
+            <?php echo $choice['name']; ?>
+          </li>
+        <?php
+        } ?>
+      </ul>
+      <div class="question__answer">
+        <p class="question__answer__text">正解！</p>
+        <p class="question__answer__text__choice">
+          正解は「
+          <?php foreach ($corrects as $correct) {
+            echo ($correct['name']);
+          } ?>
+          」です！
+        </p>
+      </div>
+    <?php } else {
+      echo "URLにidが指定されていません。";
+    } ?>
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="./js/index.js"></script>
