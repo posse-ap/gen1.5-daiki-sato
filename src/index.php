@@ -48,7 +48,7 @@ if (isset($_GET['id'])) {
       <img class="question__img" src="./img/<?php echo $id ?>.png" alt="選択肢の写真">
       <ul class="question__lists">
         <?php foreach ($choices as $index => $choice) { ?>
-          <li class="question__list" data-quizy="<?php if ($choice['valid'] == 1) {echo 1;} else {echo 2;} ?>">
+          <li class="question__list <?php if ($choice['valid'] == 1) {echo 1;} else {echo 0;} ?>">
             <?php echo $choice['name']; ?>
           </li>
         <?php
@@ -57,17 +57,16 @@ if (isset($_GET['id'])) {
       <div class="question__answer">
         <p class="question__answer__text">正解！</p>
         <p class="question__answer__text__choice">
-          正解は
+          正解は「
           <?php foreach ($corrects as $correct) {
             echo ($correct['name']);
           } ?>
-          です！
+          」です！
         </p>
       </div>
     <?php } else {
       echo "URLにidが指定されていません。";
     } ?>
-  </div>
   <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="./js/index.js"></script>
