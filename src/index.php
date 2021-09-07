@@ -47,6 +47,7 @@ if (isset($_GET['id'])) {
       </h1>
       <img class="question__img" src="./img/<?php echo $id ?>.png" alt="選択肢の写真">
       <ul class="question__lists">
+        <?php shuffle($choices) ?>
         <?php foreach ($choices as $index => $choice) { ?>
           <li class="question__list <?php if ($choice['valid'] == 1) {echo 1;} else {echo 0;} ?>">
             <?php echo $choice['name']; ?>
