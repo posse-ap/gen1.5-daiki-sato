@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: db
--- 生成日時: 2021 年 9 月 07 日 08:49
+-- 生成日時: 2021 年 9 月 07 日 10:02
 -- サーバのバージョン： 8.0.25
 -- PHP のバージョン: 7.4.20
 
@@ -20,6 +20,61 @@ SET time_zone = "+00:00";
 --
 -- データベース: `ph2_webapp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `study`
+--
+
+CREATE TABLE `study` (
+  `id` int NOT NULL,
+  `study_date` date DEFAULT NULL,
+  `learning_time` int NOT NULL,
+  `study_contents_id` int NOT NULL,
+  `study_language_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+
+--
+-- テーブルのデータのダンプ `study`
+--
+
+INSERT INTO `study` (`id`, `study_date`,  `learning_time`, `study_contents_id`, `study_language_id`) VALUES
+( 1 , '2021-09-07', 1 , 1 , 1 ),
+( 2 , '2021-09-08', 2 , 1 , 1 ),
+( 3 , '2021-09-09', 3 , 1 , 1 ),
+( 4 , '2021-09-10', 4 , 1 , 1 ),
+( 5 , '2021-09-11', 5 , 1 , 1 ),
+( 6 , '2021-09-12', 6 , 1 , 1 ),
+( 7 , '2021-09-13', 7 , 1 , 1 ),
+( 8 , '2021-09-14', 8 , 1 , 1 ),
+( 9 , '2021-09-15', 9 , 1 , 1 ),
+( 10 , '2021-09-16' , 3 , 1 , 1 ),
+( 11 , '2021-09-17' , 3 , 1 , 1 ),
+( 12 , '2021-09-18' , 3 , 1 , 1 ),
+( 13 , '2021-09-19' , 3 , 1 , 1 ),
+( 14 , '2021-09-20' , 6 , 1 , 1 ),
+( 15 , '2021-09-21' , 3 , 1 , 1 ),
+( 16 , '2021-09-22' , 3 , 1 , 1 ),
+( 17 , '2021-09-23' , 3 , 1 , 1 ),
+( 18 , '2021-09-24' , 3 , 1 , 1 ),
+( 19 , '2021-09-25' , 3 , 1 , 1 ),
+( 20 , '2021-09-26' , 7 , 1 , 1 ),
+( 21 , '2021-09-27' , 3 , 1 , 1 ),
+( 22 , '2021-09-28' , 6 , 1 , 1 ),
+( 23 , '2021-09-29' , 3 , 1 , 1 ),
+( 24 , '2021-10-1' , 3 , 1 , 1 ),
+( 25 , '2021-10-2' , 3 , 1 , 1 ),
+( 26 , '2021-10-3' , 3 , 1 , 1 ),
+( 27 , '2021-10-4' , 7 , 1 , 1 ),
+( 28 , '2021-10-5' , 3 , 1 , 1 ),
+( 29 , '2021-10-6' , 6 , 1 , 1 ),
+( 30 , '2021-10-7' , 3 , 1 , 1 ),
+( 31 , '2021-10-8' , 3 , 1 , 1 ),
+( 32 , '2021-10-9' , 3 , 1 , 1 ),
+( 33 , '2021-10-10' , 3 , 1 , 1 ),
+( 34 , '2021-10-11' , 3 , 1 , 1 ),
+( 35 , '2021-10-12' , 7 , 1 , 1 );
 
 -- --------------------------------------------------------
 
@@ -89,31 +144,15 @@ INSERT INTO `study_shedule` (`id`, `weeks`) VALUES
 (5, '5th week'),
 (6, '6th week');
 
--- --------------------------------------------------------
-
---
--- テーブルの構造 `study_time`
---
-
-CREATE TABLE `study_time` (
-  `id` int NOT NULL,
-  `today` int NOT NULL,
-  `month` int NOT NULL,
-  `total` int NOT NULL,
-  `study_contents_id` int NOT NULL,
-  `study_language_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
-
---
--- テーブルのデータのダンプ `study_time`
---
-
-INSERT INTO `study_time` (`id`, `today`, `month`, `total`, `study_contents_id`, `study_language_id`) VALUES
-(1, 2, 40, 100, 1, 1);
-
 --
 -- ダンプしたテーブルのインデックス
 --
+
+--
+-- テーブルのインデックス `study`
+--
+ALTER TABLE `study`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- テーブルのインデックス `study_contents`
@@ -134,38 +173,32 @@ ALTER TABLE `study_shedule`
   ADD PRIMARY KEY (`id`);
 
 --
--- テーブルのインデックス `study_time`
---
-ALTER TABLE `study_time`
-  ADD PRIMARY KEY (`id`);
-
---
 -- ダンプしたテーブルの AUTO_INCREMENT
 --
+
+--
+-- テーブルの AUTO_INCREMENT `study`
+--
+ALTER TABLE `study`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- テーブルの AUTO_INCREMENT `study_contents`
 --
 ALTER TABLE `study_contents`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- テーブルの AUTO_INCREMENT `study_language`
 --
 ALTER TABLE `study_language`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- テーブルの AUTO_INCREMENT `study_shedule`
 --
 ALTER TABLE `study_shedule`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- テーブルの AUTO_INCREMENT `study_time`
---
-ALTER TABLE `study_time`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
