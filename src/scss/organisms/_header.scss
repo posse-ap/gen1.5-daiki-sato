@@ -1,0 +1,14 @@
+.header{
+  display: flex;
+  align-items: center;
+  margin: 3% 3%;
+  // margin: 100px;
+
+  &__img{
+    width: 150px;
+  }
+  &__week{
+    color: #97b9d1;
+    margin-left: 3%;
+  }
+}

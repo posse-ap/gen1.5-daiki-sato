@@ -1,0 +1,31 @@
+.learning__time{
+  padding: 2% 0;
+  .learning__time__items{
+    display: flex;
+    margin: 20px auto 16px;
+    width: 100%;
+    justify-content: center;
+  }
+  .learning__time__item{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 10%;
+    margin:0 2%;
+    border-radius: 7%;
+    
+    &__text{
+      color: #0f71bc;
+    }
+    &__time{
+      font-size: 30px;
+      font-weight: 700;
+    }
+    &__hour{
+      color: #97b9d1;
+    }
+  }
+}
