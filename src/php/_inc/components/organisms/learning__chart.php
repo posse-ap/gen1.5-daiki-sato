@@ -11,7 +11,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/php/_inc/db_connect.php");
 
 
 
-$today_studies = $db->query($toeday_study_value)->fetch();
+// $today_studies = $db->query($toeday_study_value)->fetch();
 
 
 

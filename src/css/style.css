@@ -533,10 +533,39 @@ template {
   color: #97b9d1;
 }
 
+.learning__graph {
+  margin-top: 100px;
+}
+
+.learning__graph__contents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.learning__graph__content {
+  height: 400px;
+  background-color: #fff;
+  width: 90%;
+  margin: 0 auto;
+  margin-left: 40px;
+}
+
 .learning__chart {
   background-color: #fff;
   height: 200px;
   width: auto;
+}
+
+.footer {
+  margin: 50px 0;
+}
+
+.footer__record__button {
+  margin: 0 auto;
+  display: block;
+  padding: 10px 30px;
+  background-color: aqua;
 }
 
 main {
