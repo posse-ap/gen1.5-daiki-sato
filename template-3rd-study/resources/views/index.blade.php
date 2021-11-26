@@ -11,7 +11,7 @@
 
 <body>
 
-  <a href="{{ route('home') }}">管理者画面へ</a>
+  <a href="{{ route('admin') }}">管理者画面へ</a>
 
   @foreach ($quizy_ids as $quizy_id)
     <a href="{{ route('quizy.display' , ['id'=>$quizy_id]) }}">{{$quizy_id->name}}の選択肢</a>

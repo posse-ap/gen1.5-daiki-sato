@@ -17,6 +17,14 @@
                     You are logged in!
                 </div>
             </div>
+            <div class="card">
+                <div class="card-body">
+                    <a href="">追加</a>
+                </div>
+                <div class="card-body">
+                    <a href="">編集</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
