@@ -534,9 +534,317 @@ template {
 }
 
 .learning__graph {
+  margin-top: 100px;
+}
+
+.learning__graph__contents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.learning__graph__content {
+  height: 400px;
+  background-color: #fff;
+  width: 90%;
+  margin: 0 auto;
+  margin-left: 40px;
+}
+
+.learning__chart {
   background-color: #fff;
   height: 200px;
   width: auto;
+}
+
+.learning__graph__contents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.upload__modal {
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow-y: scroll;
+  padding-bottom: 100px;
+}
+
+.upload__modal__content {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: #fff;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100vh;
+}
+
+.upload__modal__inner {
+  margin: 0 5%;
+}
+
+.upload__modal__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 75px;
+  margin-bottom: 29px;
+}
+
+.upload__modal__title__heading {
+  font-size: 24px;
+  letter-spacing: -0.30px;
+  color: #333333;
+  margin-left: 11px;
+}
+
+.upload__modal__description__text {
+  text-align: left;
+  color: #333333;
+  line-height: 22px;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+}
+
+.upload__modal__description__text:first-child {
+  margin-bottom: 5px;
+}
+
+.upload__modal__uploadSpace {
+  background-color: #F5F5F5;
+  width: 100%;
+  padding: 26px 20px 50px;
+  position: relative;
+  margin-top: 19px;
+  position: relative;
+  border-radius: 4px;
+}
+
+.upload__modal__uploadSpace__text {
+  font-size: 16px;
+  color: #333333;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+}
+
+.upload__modal__uploadSpace__text--important {
+  color: #0062FF;
+}
+
+.upload__modal__uploadSpace__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 30px;
+  margin-bottom: 12px;
+}
+
+.upload__modal__uploadSpace__title__icon {
+  height: 20px;
+  margin-right: 5px;
+}
+
+.upload__modal__uploadSpace__title__text {
+  font-size: 28px;
+  font-weight: medium;
+  color: #333333;
+}
+
+.upload__modal__uploadSpace__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.upload__modal__uploadSpace__form__preview {
+  text-align: center;
+}
+
+.upload__modal__uploadSpace__form__preview > img {
+  width: 200px;
+  margin: 10px;
+  border: solid 1px silver;
+}
+
+.upload__modal__uploadSpace__form__input__area {
+  display: inline-block;
+  position: relative;
+  color: #0062FF;
+  border: 1px solid #0062FF;
+  background-color: #D6E6FF;
+  border-radius: 4px;
+  padding: 15px 0px;
+  text-align: center;
+  height: 50px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+}
+
+.upload__modal__uploadSpace__form__input {
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+.upload__modal__uploadSpace__form__button {
+  background-color: #0062FF;
+  color: #FFFFFF;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 13px 40px 14px 41px;
+  text-align: center;
+  height: 50px;
+  cursor: pointer;
+  font-size: 18px;
+  position: relative;
+}
+
+.upload__modal__uploadSpace__form__button::after {
+  position: absolute;
+  top: 35%;
+  right: -1%;
+  width: 14px;
+  height: 14px;
+  -webkit-transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+          transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0);
+  border-right: 2px solid #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+  content: "";
+  margin-right: 23px;
+}
+
+.upload__modal__uploadSpace__deadline {
+  color: #0062ff;
+  font-size: 12px;
+  font-weight: medium;
+  position: absolute;
+  right: 20px;
+  margin-top: 1px;
+}
+
+.upload__modal__uploadSpace__arrow {
+  position: absolute;
+  bottom: -2.5%;
+  left: 46%;
+}
+
+.upload__modal__completed__text {
+  font-size: 16px;
+  color: #0062FF;
+  margin: 20px 20px 0px;
+  line-height: 26px;
+  letter-spacing: 0.2px;
+}
+
+.upload__modal--close {
+  position: fixed;
+  height: 29px;
+  width: 29px;
+  right: 26px;
+  top: 28px;
+}
+
+.upload__modal--close::before {
+  background-color: #333333;
+  border-radius: 5px;
+  content: "";
+  display: inline-block;
+  height: 35px;
+  position: fixed;
+  top: 25px;
+  right: 39px;
+  vertical-align: middle;
+  width: 3px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.upload__modal--close::after {
+  background-color: #333333;
+  border-radius: 5px;
+  content: "";
+  display: inline-block;
+  height: 35px;
+  position: fixed;
+  top: 25px;
+  right: 39px;
+  vertical-align: middle;
+  width: 3px;
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+.upload__modal__question {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: fixed;
+  bottom: 3%;
+  left: 37%;
+  width: 100%;
+}
+
+.upload__modal__question__circle {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 50%;
+  position: relative;
+  width: 59px;
+  height: 59px;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 25px #00000029;
+          box-shadow: 0px 3px 25px #00000029;
+}
+
+.upload__modal__question__button {
+  color: #FFFFFF;
+  font-size: 38px;
+  font-weight: 100;
+  color: #333333;
+  border-radius: 50%;
+  padding: 7px 21px;
+}
+
+.footer {
+  margin: 50px 0;
+}
+
+.footer__record__button {
+  /* margin: 0 auto; */
+  margin-left: auto;
+  margin-right: 0;
+  display: block;
+  padding: 10px 30px;
+  background-color: aqua;
 }
 
 main {
@@ -549,3 +857,22 @@ hr {
   color: #97b9d1;
 }
 /*# sourceMappingURL=style.css.map */
+
+/* 学習コンテンツ */
+.circle{
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+/* 各コンテンツの配置 */
+.main_contents{
+  display: flex;
+}
+.time_chart{
+  width:50%;
+}
+.learning__graph__contents{
+  width: 50%;
+}

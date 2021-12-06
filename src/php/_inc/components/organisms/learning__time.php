@@ -18,17 +18,56 @@ $all_studies = $db->query($all_study_value)->fetch();
   <div class="learning__time__items">
     <div class="learning__time__item">
       <span class="learning__time__item__text">Today</span>
+<<<<<<< HEAD
       <span class="learning__time__item__time"><?= $today_studies['learning_time']; ?></span>
+=======
+      <span class="learning__time__item__time">
+        <?
+        if(!empty($today_studies)) {
+          echo $today_studies['learning_time']; 
+        }
+        else {
+          echo 0;
+        }
+        ?>
+      </span>
+>>>>>>> d5cb5d5 (ブランチ移植した)
       <span class="learning__time__item__hour">hour</span>
     </div>
     <div class="learning__time__item">
       <span class="learning__time__item__text">Month</span>
+<<<<<<< HEAD
       <span class="learning__time__item__time"><?= $this_month_studies["sum(learning_time)"]; ?></span>
+=======
+      <span class="learning__time__item__time">
+        <?
+        if(!empty($this_month_studies)) {
+          echo $this_month_studies["sum(learning_time)"];
+        }
+        else {
+          echo 0;
+        }
+        ?>
+      </span>
+>>>>>>> d5cb5d5 (ブランチ移植した)
       <span class="learning__time__item__hour">hour</span>
     </div>
     <div class="learning__time__item">
       <span class="learning__time__item__text">total</span>
+<<<<<<< HEAD
       <span class="learning__time__item__time"><?= $all_studies["sum(learning_time)"]; ?></span>
+=======
+      <span class="learning__time__item__time">
+        <?
+        if(!empty($all_studies)) {
+          echo $all_studies["sum(learning_time)"];;
+        }
+        else {
+          echo 0;
+        }
+        ?>
+      </span>
+>>>>>>> d5cb5d5 (ブランチ移植した)
       <span class="learning__time__item__hour">hour</span>
     </div>
   </div>

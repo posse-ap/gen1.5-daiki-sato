@@ -32,49 +32,37 @@ CREATE TABLE `study` (
   `study_date` date DEFAULT NULL,
   `learning_time` int NOT NULL,
   `study_contents_id` int NOT NULL,
-  `study_language_id` int NOT NULL
+  `study_language_id` int NOT NULL,
+  `study_contents_number` int NOT NULL,
+  `study_language_number` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- テーブルのデータのダンプ `study`
 --
 
-INSERT INTO `study` (`id`, `study_date`,  `learning_time`, `study_contents_id`, `study_language_id`) VALUES
-( 1 , '2021-09-07', 1 , 1 , 1 ),
-( 2 , '2021-09-08', 2 , 1 , 1 ),
-( 3 , '2021-09-09', 3 , 1 , 1 ),
-( 4 , '2021-09-10', 4 , 1 , 1 ),
-( 5 , '2021-09-11', 5 , 1 , 1 ),
-( 6 , '2021-09-12', 6 , 1 , 1 ),
-( 7 , '2021-09-13', 7 , 1 , 1 ),
-( 8 , '2021-09-14', 8 , 1 , 1 ),
-( 9 , '2021-09-15', 9 , 1 , 1 ),
-( 10 , '2021-09-16' , 3 , 1 , 1 ),
-( 11 , '2021-09-17' , 3 , 1 , 1 ),
-( 12 , '2021-09-18' , 3 , 1 , 1 ),
-( 13 , '2021-09-19' , 3 , 1 , 1 ),
-( 14 , '2021-09-20' , 6 , 1 , 1 ),
-( 15 , '2021-09-21' , 3 , 1 , 1 ),
-( 16 , '2021-09-22' , 3 , 1 , 1 ),
-( 17 , '2021-09-23' , 3 , 1 , 1 ),
-( 18 , '2021-09-24' , 3 , 1 , 1 ),
-( 19 , '2021-09-25' , 3 , 1 , 1 ),
-( 20 , '2021-09-26' , 7 , 1 , 1 ),
-( 21 , '2021-09-27' , 3 , 1 , 1 ),
-( 22 , '2021-09-28' , 6 , 1 , 1 ),
-( 23 , '2021-09-29' , 3 , 1 , 1 ),
-( 24 , '2021-10-1' , 3 , 1 , 1 ),
-( 25 , '2021-10-2' , 3 , 1 , 1 ),
-( 26 , '2021-10-3' , 3 , 1 , 1 ),
-( 27 , '2021-10-4' , 7 , 1 , 1 ),
-( 28 , '2021-10-5' , 3 , 1 , 1 ),
-( 29 , '2021-10-6' , 6 , 1 , 1 ),
-( 30 , '2021-10-7' , 3 , 1 , 1 ),
-( 31 , '2021-10-8' , 3 , 1 , 1 ),
-( 32 , '2021-10-9' , 3 , 1 , 1 ),
-( 33 , '2021-10-10' , 3 , 1 , 1 ),
-( 34 , '2021-10-11' , 3 , 1 , 1 ),
-( 35 , '2021-10-12' , 7 , 1 , 1 );
+INSERT INTO `study` (`id`, `study_date`,  `learning_time`, `study_contents_id`, `study_language_id`, `study_contents_number`, `study_language_number` ) VALUES
+( 1 , '2021-10-07', 1 , 1 , 1 , 2 , 2 ),
+( 2 , '2021-10-08', 2 , 1 , 1 , 2 , 2 ),
+( 3 , '2021-10-09', 3 , 2 , 1 , 3 , 1 ),
+( 4 , '2021-10-10', 4 , 2 , 1 , 2 , 2 ),
+( 5 , '2021-10-11', 5 , 2 , 1 , 1 , 4 ),
+( 6 , '2021-10-12', 6 , 2 , 1 , 2 , 2 ),
+( 7 , '2021-10-13', 7 , 2 , 1 , 3 , 1 ),
+( 8 , '2021-10-14', 8 , 2 , 1 , 1 , 3 ),
+( 9 , '2021-10-15', 9 , 2 , 1 , 1 , 4 ),
+( 10 ,'2021-10-16' , 3 , 3 , 1 , 2 , 2 ),
+( 11 ,'2021-10-17' , 3 , 3 , 1 , 2 , 3 ),
+( 12 ,'2021-10-18' , 3 , 3 , 3 , 1 , 3 ),
+( 13 ,'2021-10-19' , 3 , 3 , 3 , 2 , 3 ),
+( 14 ,'2021-10-20' , 6 , 3 , 3 , 1 , 3 ),
+( 15 ,'2021-10-21' , 3 , 3 , 3 , 2 , 3 ),
+( 16 ,'2021-10-28' , 3 , 3 , 3 , 1 , 3 ),
+( 17 ,'2021-10-23' , 3 , 3 , 3 , 1 , 4 ),
+( 18 ,'2021-10-24' , 3 , 3 , 3 , 2 , 2 ),
+( 19 ,'2021-10-25' , 3 , 3 , 1 , 3 , 1 );
+( 20 ,'2021-11-1' , 3 , 3 , 1 , 3 , 1 );
+( 21 ,'2021-11-2' , 3 , 3 , 1 , 3 , 1 );
 
 -- --------------------------------------------------------
 
@@ -84,17 +72,18 @@ INSERT INTO `study` (`id`, `study_date`,  `learning_time`, `study_contents_id`, 
 
 CREATE TABLE `study_contents` (
   `id` int NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `color` VARCHAR(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- テーブルのデータのダンプ `study_contents`
 --
 
-INSERT INTO `study_contents` (`id`, `name`) VALUES
-(1, 'ドットインストール'),
-(2, 'N予備校'),
-(3, 'POSSE課題');
+INSERT INTO `study_contents` (`id`, `name`, `color`) VALUES
+(1, 'ドットインストール', '#1B71BD'),
+(2, 'N予備校', '#2A54EF'),
+(3, 'POSSE課題', '#21BDDE');
 
 -- --------------------------------------------------------
 
@@ -104,22 +93,23 @@ INSERT INTO `study_contents` (`id`, `name`) VALUES
 
 CREATE TABLE `study_language` (
   `id` int NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `color` VARCHAR(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 
 --
 -- テーブルのデータのダンプ `study_language`
 --
 
-INSERT INTO `study_language` (`id`, `name`) VALUES
-(1, 'JavaScript'),
-(2, 'CSS'),
-(3, 'PHP'),
-(4, 'HTML'),
-(5, 'Laravel'),
-(6, 'SQL'),
-(7, 'SHELL'),
-(8, '情報システム基礎知識（その他）');
+INSERT INTO `study_language` (`id`, `name`, `color`) VALUES
+(1, 'JavaScript', '#2A54EF'),
+(2, 'CSS', '#1B71BD'),
+(3, 'PHP', '#21BDDE'),
+(4, 'HTML', '#3DCEFD'),
+(5, 'Laravel', '#B39EF3'),
+(6, 'SQL', '#6D47EC'),
+(7, 'SHELL', '#4A18EF'),
+(8, '情報システム基礎知識（その他）', '#3107BF');
 
 -- --------------------------------------------------------
 

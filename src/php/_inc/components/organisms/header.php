@@ -11,4 +11,8 @@
 <header class="header">
   <a href="#"><img class="header__img" src="../../../../img/posse_logo.png" alt="POSSEのheaderのロゴ"></a>
   <p class="header__week">4th week</p>
+<<<<<<< HEAD
+=======
+  <button class="footer__record__button upload__modal--open">記録・投稿</button>
+>>>>>>> d5cb5d5 (ブランチ移植した)
 </header>
