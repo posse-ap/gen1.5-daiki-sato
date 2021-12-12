@@ -3,27 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Model\Choice;
+use App\Model\BigQuestion;
 use App\Model\Question;
+use App\Model\Choice;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
+    // Topページ
     function index(){
-        $quizy_ids = Question::get();
+        return view('index');
+    }
 
-        return view('index' ,compact('quizy_ids'));
+    // クイズ一覧
+    function list(){
+        $big_question_data = BigQuestion::get();
+        return view('quizy.index' , compact( 'big_question_data' ));
     }
 
 
-    function quizy($id){
+    // TODO:データをどのように送るか
+    function show($id){
 
-        $questions_data = Question::where('id', '=', $id)->get();
-        $choices_data = Choice::where('question_id', '=', $id)->get();
-        $choices_answer_data = Choice::where('question_id', '=', $id)->where('valid', '=', 1)->get();
-        // dd($choices_data);
+        $big_question_data = BigQuestion::where( 'id' , $id )->first();
+        // dd($big_question_data->questions->first());
+        // $choice_data = Question::where('question_id', '=', $id)->get();
+        // $choice_data = Choice::where('question_id', '=', $id)->where('valid', '=', 1)->get();
 
 
-        return view('quizy' , compact('questions_data' , 'choices_data' , 'choices_answer_data'));
+
+        return view('quizy.quizy' , compact( 'big_question_data' ));
     }
 }

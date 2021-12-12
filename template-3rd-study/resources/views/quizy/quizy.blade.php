@@ -11,27 +11,28 @@
 </head>
 
 <body>
-    @foreach ($questions_data as $questions)
+    @foreach ($big_question_data->questions as $question)
+    <?php dd($big_question_data->questions->->get()); ?>
 
         <div class="question">
-            <h1 class="question__title">{{ $questions->id }}.この地名はなんて読む？</h1>
+            <h1 class="question__title">{{ $big_question_data->questions->id }}.この地名はなんて読む？</h1>
             <img class="question__img" src="" alt="選択肢の写真">
             <ul class="question__lists">
-                @foreach ($choices_data as $choices)
-                    <li class="question__list">{{ $choices->name }}</li>
+                @foreach ($big_question_data->questions->choices as $choice)
+                    <li class="question__list">{{ $choice->name }}</li>
                 @endforeach
             </ul>
 
-            <div class="question__answer">
+            {{-- <div class="question__answer">
                 <p class="question__answer__text">正解！</p>
                 <p class="question__answer__text__choice">
                     @foreach ($choices_answer_data as $choices_answer)
-                      正解は「
-                      {{ $choices_answer->name }}
-                      」です！
+                        正解は「
+                        {{ $choices_answer->name }}
+                        」です！
                     @endforeach
                 </p>
-            </div>
+            </div> --}}
     @endforeach
 
     <!-- jquery -->

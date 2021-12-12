@@ -2,6 +2,13 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+
+/*----------------------------
+Top
+-----------------------------*/
+Route::get('/', 'QuizController@index');
+
+
 /*----------------------------
 admin
 -----------------------------*/
@@ -15,15 +22,18 @@ Route::post('/admin/add', 'Admin\AdminController@add')->name('admin.add');
 Route::get('/admin/edit/{id}', 'Admin\AdminController@edit_show')->name('admin.edit_show');
 Route::post('/admin/edit/{id}', 'Admin\AdminController@edit')->name('admin.edit');
 
+// 編集
+// Route::get('/admin/edit/{id}', 'Admin\AdminController@edit_show')->name('admin.edit_show');
+Route::post('/admin/delete/{id}', 'Admin\AdminController@delete')->name('admin.delete');
 
 
 
 /*----------------------------
 user
 -----------------------------*/
-Route::get('/', 'QuizController@index');
 Route::get('/quizy', 'QuizController@index');
-Route::get('/quizy/{id}', 'QuizController@quizy')->name('quizy.display');
+Route::get('/quizy/list', 'QuizController@list')->name('quizy.list');
+Route::get('/quizy/show/{id}', 'QuizController@show')->name('quizy.show');
 
 
 Auth::routes();

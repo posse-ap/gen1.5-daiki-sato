@@ -6,11 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-
-    protected $fillable = ['name'];
-    
-    public function choice()
+    public function choices()
     {
-        return $this->hasOne('App\Model\Choice');
+        return $this->hasMany('App\Model\Choice');
     }
 }
