@@ -11,33 +11,21 @@
 </head>
 
 <body>
-    @foreach ($big_question_data->questions as $question)
-    <?php dd($big_question_data->questions->->get()); ?>
+    <div class="question">
+        @foreach ($big_question_data->questions as $question)
+            <h2 class="question__title">{{$loop->index + 1}}.この地名はなんて読む？</h2>
+            <img class="question__img" src="{{ asset('/img/'.$question->id.'.png') }}" alt="選択肢の写真">
 
-        <div class="question">
-            <h1 class="question__title">{{ $big_question_data->questions->id }}.この地名はなんて読む？</h1>
-            <img class="question__img" src="" alt="選択肢の写真">
             <ul class="question__lists">
-                @foreach ($big_question_data->questions->choices as $choice)
+                @foreach ($question->choices as $choice)
                     <li class="question__list">{{ $choice->name }}</li>
                 @endforeach
             </ul>
-
-            {{-- <div class="question__answer">
-                <p class="question__answer__text">正解！</p>
-                <p class="question__answer__text__choice">
-                    @foreach ($choices_answer_data as $choices_answer)
-                        正解は「
-                        {{ $choices_answer->name }}
-                        」です！
-                    @endforeach
-                </p>
-            </div> --}}
-    @endforeach
+        @endforeach
+    </div>
 
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    {{-- <script src="./js/index.js"></script> --}}
     <script src="{{ asset('/js/app.js') }}"></script>
     <script src="{{ asset('/js/index.js') }}"></script>
 </body>

@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Model\BigQuestion;
-use App\Model\Question;
-use App\Model\Choice;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
@@ -24,14 +22,7 @@ class QuizController extends Controller
 
     // TODO:データをどのように送るか
     function show($id){
-
-        $big_question_data = BigQuestion::where( 'id' , $id )->first();
-        // dd($big_question_data->questions->first());
-        // $choice_data = Question::where('question_id', '=', $id)->get();
-        // $choice_data = Choice::where('question_id', '=', $id)->where('valid', '=', 1)->get();
-
-
-
+        $big_question_data = BigQuestion::where('id' , $id)->first();
         return view('quizy.quizy' , compact( 'big_question_data' ));
     }
 }

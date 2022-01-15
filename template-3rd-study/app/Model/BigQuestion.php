@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class BigQuestion extends Model
 {
+    protected $fillable = ['name'];
+
     public function questions()
     {
-        return $this->hasOne('App\Model\Question');
+        return $this->hasMany('App\Model\Question');
     }
 }

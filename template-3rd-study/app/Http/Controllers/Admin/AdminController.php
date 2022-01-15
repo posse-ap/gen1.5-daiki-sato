@@ -6,15 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Choice;
 use App\Model\Question;
+use App\Model\BigQuestion;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        $quizy_ids = Question::get();
-
-        $choice_data = Choice::get();
-        return view('admin.index', compact('quizy_ids' , 'choice_data'));
+        $big_question_data = BigQuestion::get();
+        return view('admin.index', compact('big_question_data'));
     }
 
 
@@ -29,28 +28,17 @@ class AdminController extends Controller
 
     public function add(Request $request)
     {
-        $question_param = new Question();
+        $question_param = new BigQuestion();
 
         $question_param->fill([
             'name' => $request->name,
         ]);
-        // データベースに値をinsert
         $question_param->save();
-
-        $choices_param = new Choice();
-
-        $choices_param->fill([
-            'name' => $request->choices_param,
-            'valid' => $request->valid,
-            'question_id' => $request->question_id,
-        ]);
-        // データベースに値をinsert
-        $choices_param->save();
 
         return redirect(route('admin'));
     }
 
-    
+
     /*---------------------------
     編集
     ---------------------------*/
@@ -65,9 +53,6 @@ class AdminController extends Controller
     {
         // TODO:編集
         Question::where('id', $request->id)->update(['name' => $request->name]);
-        // dd($request->id);
-        // dd($request->name);
-
         return redirect(route('admin'));
     }
 
