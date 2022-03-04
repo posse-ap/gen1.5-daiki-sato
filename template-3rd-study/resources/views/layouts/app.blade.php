@@ -88,7 +88,7 @@
                                 </div> --}}
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
-                                    <input type="submit" value="ログアウト">
+                                    <input class="btn btn-outline-primary mr-2 mb-1" type="submit" value="ログアウト">
                                 </form>
                             </li>
                         @endguest
