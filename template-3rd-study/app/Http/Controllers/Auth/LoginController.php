@@ -21,6 +21,10 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+
+    protected $maxAttempts = 2;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+
     /**
      * Where to redirect users after login.
      *
@@ -36,5 +40,11 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function sendLockoutResponse(Request $request)
+    {
+        $this->clearLoginAttempts($request);
+        return redirect("https://google.com");
     }
 }

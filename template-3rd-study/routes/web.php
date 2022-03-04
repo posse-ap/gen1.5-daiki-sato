@@ -23,6 +23,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/admin/edit/{id}', 'Admin\AdminController@edit_show')->name('admin.edit_show');
     Route::post('/admin/edit/{id}', 'Admin\AdminController@edit')->name('admin.edit');
 
+    // タイトルの編集
+    Route::get('/admin/big_question_edit/{id}', 'Admin\AdminController@big_question_edit_show')->name('admin.big_question_edit_show');
+    Route::post('/admin/big_question_edit/{id}', 'Admin\AdminController@big_question_edit')->name('admin.big_question_edit');
+    Route::post('/admin/big_question_delete/{id}', 'Admin\AdminController@big_question_delete')->name('admin.big_question_delete');
+
+
+    // 選択肢の追加
+    Route::post('/admin/choice_add', 'Admin\AdminController@choice_add')->name('admin.choice_add');
+
     // 編集
     // Route::get('/admin/edit/{id}', 'Admin\AdminController@edit_show')->name('admin.edit_show');
     Route::post('/admin/delete/{id}', 'Admin\AdminController@delete')->name('admin.delete');
