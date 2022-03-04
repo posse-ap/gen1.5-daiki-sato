@@ -48,10 +48,12 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="btn btn-outline-primary mr-2 mb-1 nav-link" href="{{ route('admin') }}">編集TOPに戻る</a>
+                            <a class="btn btn-outline-primary mr-2 mb-1 nav-link"
+                                href="{{ route('admin') }}">編集TOPに戻る</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-primary mr-2 mb-1 nav-link" href="{{ route('admin.add') }}">追加</a>
+                            <a class="btn btn-outline-primary mr-2 mb-1 nav-link"
+                                href="{{ route('admin.add') }}">追加</a>
                         </li>
                         <li class="nav-item">
                             {{-- <a class="btn btn-outline-primary mr-2 mb-1 nav-link" href="{{ route('admin.edit') }}">編集</a> --}}
@@ -73,7 +75,7 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -83,7 +85,11 @@
                                         style="display: none;">
                                         @csrf
                                     </form>
-                                </div>
+                                </div> --}}
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <input type="submit" value="ログアウト">
+                                </form>
                             </li>
                         @endguest
                     </ul>
