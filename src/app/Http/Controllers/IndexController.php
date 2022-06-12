@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\BigQuestion;
+
 class IndexController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $bigQuestions = BigQuestion::get();
+        return view('quizy.index', compact("bigQuestions"));
     }
 }
