@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BigQuestion;
+use App\Question;
 
 class IndexController extends Controller
 {
@@ -10,5 +11,11 @@ class IndexController extends Controller
     {
         $bigQuestions = BigQuestion::get();
         return view('quizy.index', compact("bigQuestions"));
+    }
+
+    public function show($id)
+    {
+        $questions = Question::where("id", $id)->get();
+        return view('quizy.quiz', compact("questions"));
     }
 }
