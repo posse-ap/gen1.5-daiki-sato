@@ -1,10 +1,10 @@
-# phase3 Quizy sample code
+## 該当フェーズ
+- フェーズ3
+
+## その他
+- LGTMと打ったら、自動でLGTM画像が生成されるようになっています
 
 ## setup
-
-`git clone https://github.com/posse-ap/sample-ph3-quizy.git`
-
-`cd sample-ph3-quizy`
 
 `docker-compose up -d`
 
