@@ -9,14 +9,7 @@
 </head>
 
 <body>
-    @foreach($big_questions as $big_question)
-        <p>
-            <a href="{{ route('quiz.id', ['id'=>$big_question->id]) }}">
-                {{ $big_question->id }}：{{ $big_question->name }}
-            </a>
-        </p>
-    @endforeach
-    <a href="./admin">管理画面はこちら</a>
+    <a href="./admin">HOME</a>
 </body>
 
 </html>
