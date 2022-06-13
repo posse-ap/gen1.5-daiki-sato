@@ -18,9 +18,8 @@
     <header class="bg-white">
         <nav class="px-2 bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700">
             <div class="container flex flex-wrap items-center justify-between mx-auto">
-                <a href="{{ route('top') }}" class="flex items-center">
+                <a href="{{ route('top') }}" class="flex items-center mt-5">
                     <img src="/img/posseLogo.png" class="h-6 mr-3 sm:h-10" alt="Flowbite Logo" />
-                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
                 </a>
                 <button data-collapse-toggle="mobile-menu" type="button"
                     class="inline-flex items-center justify-center ml-3 text-gray-400 rounded-lg md:hidden hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-500"
@@ -97,7 +96,7 @@
             </div>
         </nav>
     </header>
-    <main class="mb-10">
+    <main class="my-20">
         <div class="container mx-auto">
             @yield('contents')
         </div>
