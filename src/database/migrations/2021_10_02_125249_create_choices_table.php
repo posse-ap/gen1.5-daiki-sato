@@ -15,9 +15,9 @@ class CreateChoicesTable extends Migration
     {
         Schema::create('choices', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('question_id');
-            $table->string('name', 255);
-            $table->boolean('valid');
+            $table->unsignedBigInteger('question_id')->comment('question.idと紐づくカラム');
+            $table->string('name', 255)->comment('選択肢の名前のカラム');
+            $table->boolean('valid')->comment('選択肢が正解か不正解かを判断するカラム');
             $table->timestamps();
         });
     }

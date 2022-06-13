@@ -15,7 +15,7 @@ class CreateBigQuestionsTable extends Migration
     {
         Schema::create('big_questions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 255);
+            $table->string('name', 255)->comment('大問の名前を表すカラム');
             $table->timestamps();
         });
     }

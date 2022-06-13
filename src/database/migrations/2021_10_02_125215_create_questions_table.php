@@ -15,8 +15,8 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('big_question_id');
-            $table->string('image', 255);
+            $table->unsignedBigInteger('big_question_id')->comment('big_question.idと紐づくカラム');
+            $table->string('image', 255)->comment('問題の画像のパスを保存するカラム');
             $table->timestamps();
         });
     }
