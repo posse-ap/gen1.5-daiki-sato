@@ -18,7 +18,7 @@
     <header class="bg-white">
         <nav class="px-2 bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700">
             <div class="container flex flex-wrap items-center justify-between mx-auto">
-                <a href="#" class="flex items-center">
+                <a href="{{ route('top') }}" class="flex items-center">
                     <img src="/img/posseLogo.png" class="h-6 mr-3 sm:h-10" alt="Flowbite Logo" />
                     <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
                 </a>
