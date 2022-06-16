@@ -12,4 +12,4 @@
  */
 
 Route::get('/', 'IndexController@index');
-Route::get('/quiz/{id}', 'IndexController@show')->name('quiz');
+Route::get('/quiz/{bigQuestionId}', 'IndexController@show')->name('quiz');

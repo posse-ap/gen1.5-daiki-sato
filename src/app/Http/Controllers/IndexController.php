@@ -13,9 +13,9 @@ class IndexController extends Controller
         return view('quizy.index', compact("bigQuestions"));
     }
 
-    public function show($id)
+    public function show($bigQuestionId)
     {
-        $questions = Question::where("id", $id)->get();
+        $questions = Question::where("big_question_id", $bigQuestionId)->get();
         return view('quizy.quiz', compact("questions"));
     }
 }
