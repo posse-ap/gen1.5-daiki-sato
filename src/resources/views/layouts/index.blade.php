@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=385, initial-scale=1.0">
-    <link rel="icon" href="/img/favicon.ico">
-    <link rel="apple-touch-icon" href="/img/mobile_icon.PNG" sizes="180x180">
-    <link rel="icon" type="image/png" href="/img/mobile_icon.PNG" sizes="192x192">
+    <link rel="icon" href="{{ asset('/img/posseLogo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('/img/mobile_icon.PNG') }}" sizes="180x180">
+    <link rel="icon" type="image/png" href="{{ asset('/img/mobile_icon.PNG') }}" sizes="192x192">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     @yield('meta')
@@ -19,7 +19,7 @@
         <nav class="px-2 bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700">
             <div class="container flex flex-wrap items-center justify-between mx-auto">
                 <a href="#" class="flex items-center">
-                    <img src="/img/posseLogo.png" class="h-6 mr-3 sm:h-10" alt="Flowbite Logo" />
+                    <img src="{{ asset('/img/posseLogo.png') }}" class="h-6 mr-3 sm:h-10" alt="Flowbite Logo" />
                     <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
                 </a>
                 <button data-collapse-toggle="mobile-menu" type="button"
