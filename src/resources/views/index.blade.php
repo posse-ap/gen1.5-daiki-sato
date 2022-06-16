@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.index')
 
-<head>
-    <meta charset="UTF-8">
-    <title>quizy</title>
-    <link
-        href="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/html5resetcss/html5reset-1.6.css">
-</head>
+@section('contents')
+    <div class="flex flex-col mb-5">
 
-<body>
-    <a href="./admin">HOME</a>
-</body>
 
-</html>
+    </div>
+@endsection
