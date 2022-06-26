@@ -35,12 +35,11 @@
         </div>
     </header>
 
-    <main class="mb-10 flex-grow">
+    <main class="mb-10 flex-grow bg-slate-100">
         <div class="container mx-auto">
             @yield('contents')
         </div>
-    </main>
-    <footer>
+
         <div class="w-full max-w-3xl flex mx-auto">
             <div class="flex justify-center flex-auto max-w-md w-64 bg-blue-500 text-white font-bold text-center py-4">
                 <svg class="w-6 h-6 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -65,7 +64,7 @@
                 <span>今日の出欠</span>
             </div>
         </div>
-    </footer>
+    </main>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="{{ asset('/js/main.js') }}"></script>
 </body>
