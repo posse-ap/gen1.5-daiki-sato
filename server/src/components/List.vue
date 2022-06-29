@@ -33,6 +33,17 @@ export default {
       todos: []
     };
   },
+  watch: {
+    todos: {
+      handler: function() {
+        localStorage.setItem("todos", JSON.stringify(this.todos));
+      },
+      deep: true
+    }
+  },
+  mounted: function() {
+    this.todos = JSON.parse(localStorage.getItem("todos")) || [];
+  },
   methods: {
     addItem: function(event) {
       if (this.newItem === "") {
@@ -55,10 +66,9 @@ export default {
   },
   computed: {
     remaining: function() {
-      const remainingNumber = this.todos.filter(function(todo) {
+      return this.todos.filter(function(todo) {
         return !todo.isDone;
       });
-      return remainingNumber;
     }
   }
 };
