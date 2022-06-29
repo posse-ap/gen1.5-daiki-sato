@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h2>TODO List</h2>
+    <button @click="purge">Purge</button>
     <h1>{{ remaining.length }}/{{ todos.length }}</h1>
 
     <form v-on:submit.prevent>
@@ -47,6 +48,9 @@ export default {
     },
     deleteItem: function(key) {
       this.todos.splice(key, 1);
+    },
+    purge: function() {
+      this.todos = this.remaining;
     }
   },
   computed: {
