@@ -7,7 +7,7 @@
       <button v-on:click="addItem">Add</button>
     </form>
 
-    <table>
+    <table v-if="todos.length">
       <tr v-for="(todo, key) in todos" :key="key">
         <td><input type="checkbox" v-model="todo.isDone" /></td>
         <td>
@@ -15,6 +15,10 @@
         </td>
         <td><button @click="deleteItem(key)">Delete</button></td>
       </tr>
+    </table>
+
+    <table v-else>
+      <p>to doがありません</p>
     </table>
   </div>
 </template>
