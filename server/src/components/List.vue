@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <h2>TODO List</h2>
+    <h1>{{ remaining.length }}/{{ todos.length }}</h1>
 
     <form v-on:submit.prevent>
       <input type="text" v-model="newItem" />
@@ -46,6 +47,14 @@ export default {
     },
     deleteItem: function(key) {
       this.todos.splice(key, 1);
+    }
+  },
+  computed: {
+    remaining: function() {
+      const remainingNumber = this.todos.filter(function(todo) {
+        return !todo.isDone;
+      });
+      return remainingNumber;
     }
   }
 };
