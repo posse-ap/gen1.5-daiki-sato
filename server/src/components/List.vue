@@ -10,12 +10,23 @@
     </form>
 
     <table v-if="todos.length">
-      <tr v-for="(todo, key) in todos" :key="key">
+      <tr v-for="(todo, index) in todos" :key="index">
         <td><input type="checkbox" v-model="todo.isDone" /></td>
         <td>
           <span :class="{ done: todo.isDone }">{{ todo.item }}</span>
         </td>
-        <td><button @click="deleteItem(key)">Delete</button></td>
+        <div v-if="todo.isActive">
+          <span>
+            <input type="text" v-model="todo.item" />
+          </span>
+          <button @click="updateDone(index)">完了</button>
+        </div>
+        <td>
+          <button v-show="!todo.isActive" @click="updateItem(index)">
+            edit
+          </button>
+        </td>
+        <td><button @click="deleteItem(index)">Delete</button></td>
       </tr>
     </table>
 
@@ -52,16 +63,24 @@ export default {
       }
       var todo = {
         item: this.newItem,
-        isDone: false
+        isDone: false,
+        isActive: false
       };
       this.todos.push(todo);
       this.newItem = "";
     },
-    deleteItem: function(key) {
-      this.todos.splice(key, 1);
+    deleteItem: function(index) {
+      this.todos.splice(index, 1);
     },
     purge: function() {
       this.todos = this.remaining;
+    },
+    updateItem(index) {
+      this.todos[index].isActive = true;
+      this.todos[index].item = this.todos[index].item;
+    },
+    updateDone(index) {
+      this.todos[index].isActive = false;
     }
   },
   computed: {
