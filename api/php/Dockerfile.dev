@@ -1,0 +1,18 @@
+FROM php:8.0-fpm-alpine
+
+RUN apk upgrade --update \
+    && apk --no-cache add \
+    nginx \
+    postgresql-dev \
+    && docker-php-ext-install pdo_pgsql
+
+# Set working directory
+WORKDIR /var/www/apps
+
+# COPY php $PHP_INI_DIR
+COPY etc /etc
+
+# 起動スクリプト設定（Nginx+PHP-FPMの起動）
+COPY run.sh /usr/local/bin/run.sh
+RUN chmod 755 /usr/local/bin/run.sh
+CMD ["run.sh"]
