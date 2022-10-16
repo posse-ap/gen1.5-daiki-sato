@@ -1,0 +1,58 @@
+version: "3.8"
+services:
+  front:
+    build:
+      context: ./
+      dockerfile: ./docker/front/Dockerfile
+    tty: true
+    working_dir: /app
+    volumes:
+      - ./front:/app
+      - ./api/openapi:/app/openapi
+    environment:
+      - PORT=3000
+      - HOST=0.0.0.0
+    ports:
+      - 3000:3000
+    command: bash -c 'yarn install && yarn dev'
+  api:
+    platform: linux/amd64
+    build:
+      context: ./api/php
+      dockerfile: Dockerfile.dev
+    ports:
+      - 80:80
+    volumes:
+      - ./api:/var/www/posse:cached
+    depends_on:
+      - pgsql
+  pgsql:
+    build:
+      context: ./docker/pgsql
+    hostname: posse-db
+    container_name: posse-db
+    volumes:
+      - ./docker/pgsql/data:/var/lib/pgsql
+    environment:
+      - POSTGRES_USER=posse_user
+      - POSTGRES_PASSWORD=posse_password
+      - POSTGRES_DB=posse
+    ports:
+      - 5433:5432
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    volumes:
+      - ./api/openapi/openapi.yml:/app/openapi.yml
+    environment:
+      SWAGGER_JSON: /app/openapi.yml
+    ports:
+      - 8080:8080
+  api-mock:
+    image: stoplight/prism:latest
+    ports:
+      - 4010:4010
+    # make random values by -d option
+    command: mock -h 0.0.0.0 -d /openapi/openapi.yml
+    # command: mock -h 0.0.0.0 /openapi/openapi.yml
+    volumes:
+      - ./api/openapi/:/openapi/

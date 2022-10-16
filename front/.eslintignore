@@ -1,0 +1,7 @@
+public/
+*.config.js
+.*lintrc.js
+/*.*
+**/node_modules/*
+**/out/*
+**/.next/*

@@ -1,5 +1,1 @@
-# 該当フェーズ
-- フェーズ◯
-
-# その他
-- LGTMと打ったら、自動でLGTM画像が生成されるようになっています
+# antipattern-portal-site

@@ -1,0 +1,46 @@
+name: Deploy Prod
+
+on:
+  push:
+    branches:
+      - setting/deploy
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+
+      - name: Login to Amazon ECR # ECRログイン処理
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: PHP Build, tag, and push image to Amazon ECR # PHPコンテナビルド〜ECRにPush
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: portal-api-stg
+          BRANCH_NAME: develop
+          GITHUB_USER: ${{ secrets.GIT_HUB_PAT_USER }}
+          GITHUB_TOKEN: ${{ secrets.GIT_HUB_PAT }}
+          COMPOSER_CONFIG: ${{ secrets.COMPOSER_CONFIG }}
+        run: |
+          aws ssm get-parameter --name "/antipattern-portal-site/stg/env" --with-decryption --query 'Parameter.Value' --output text > ./.env.prod
+          docker build -t $ECR_REPOSITORY \
+          --build-arg BRANCH_NAME=$BRANCH_NAME \
+          --build-arg GITHUB_USER=$GITHUB_USER \
+          --build-arg GITHUB_TOKEN=$GITHUB_TOKEN \
+          --build-arg COMPOSER_CONFIG=$COMPOSER_CONFIG \
+          -f ./php/Dockerfile .
+          docker tag $ECR_REPOSITORY:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+        # 今後version付ける
+        # docker tag $ECR_REPOSITORY:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
+        # docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
