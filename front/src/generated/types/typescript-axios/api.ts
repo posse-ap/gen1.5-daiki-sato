@@ -140,13 +140,13 @@ export const StudyingHourApiAxiosParamCreator = function (configuration?: Config
       };
     },
     /**
-     * Returns total studying hour.
-     * @summary Get total studying hour.
+     * Returns today studying hour.
+     * @summary Get today studying hour.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getTotalStudyingHour: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-      const localVarPath = `/total-studying-hours`;
+    getTodayStudyingHour: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      const localVarPath = `/today-sftudying-hours`;
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
       let baseOptions;
@@ -172,13 +172,13 @@ export const StudyingHourApiAxiosParamCreator = function (configuration?: Config
       };
     },
     /**
-     * Returns today studying hour.
-     * @summary Get today studying hour.
+     * Returns total studying hour.
+     * @summary Get total studying hour.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getTotalTodayStudyingHour: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-      const localVarPath = `/today-sftudying-hours`;
+    getTotalStudyingHour: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+      const localVarPath = `/total-studying-hours`;
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
       let baseOptions;
@@ -234,6 +234,18 @@ export const StudyingHourApiFp = function (configuration?: Configuration) {
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
     },
     /**
+     * Returns today studying hour.
+     * @summary Get today studying hour.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getTodayStudyingHour(
+      options?: AxiosRequestConfig
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TodayStudyingHour>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getTodayStudyingHour(options);
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
      * Returns total studying hour.
      * @summary Get total studying hour.
      * @param {*} [options] Override http request option.
@@ -243,18 +255,6 @@ export const StudyingHourApiFp = function (configuration?: Configuration) {
       options?: AxiosRequestConfig
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TotalStudyingHour>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.getTotalStudyingHour(options);
-      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-    },
-    /**
-     * Returns today studying hour.
-     * @summary Get today studying hour.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getTotalTodayStudyingHour(
-      options?: AxiosRequestConfig
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TodayStudyingHour>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.getTotalTodayStudyingHour(options);
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
     },
   };
@@ -289,6 +289,15 @@ export const StudyingHourApiFactory = function (
         .then((request) => request(axios, basePath));
     },
     /**
+     * Returns today studying hour.
+     * @summary Get today studying hour.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getTodayStudyingHour(options?: any): AxiosPromise<TodayStudyingHour> {
+      return localVarFp.getTodayStudyingHour(options).then((request) => request(axios, basePath));
+    },
+    /**
      * Returns total studying hour.
      * @summary Get total studying hour.
      * @param {*} [options] Override http request option.
@@ -296,17 +305,6 @@ export const StudyingHourApiFactory = function (
      */
     getTotalStudyingHour(options?: any): AxiosPromise<TotalStudyingHour> {
       return localVarFp.getTotalStudyingHour(options).then((request) => request(axios, basePath));
-    },
-    /**
-     * Returns today studying hour.
-     * @summary Get today studying hour.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    getTotalTodayStudyingHour(options?: any): AxiosPromise<TodayStudyingHour> {
-      return localVarFp
-        .getTotalTodayStudyingHour(options)
-        .then((request) => request(axios, basePath));
     },
   };
 };
@@ -334,6 +332,19 @@ export class StudyingHourApi extends BaseAPI {
   }
 
   /**
+   * Returns today studying hour.
+   * @summary Get today studying hour.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StudyingHourApi
+   */
+  public getTodayStudyingHour(options?: AxiosRequestConfig) {
+    return StudyingHourApiFp(this.configuration)
+      .getTodayStudyingHour(options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
    * Returns total studying hour.
    * @summary Get total studying hour.
    * @param {*} [options] Override http request option.
@@ -343,19 +354,6 @@ export class StudyingHourApi extends BaseAPI {
   public getTotalStudyingHour(options?: AxiosRequestConfig) {
     return StudyingHourApiFp(this.configuration)
       .getTotalStudyingHour(options)
-      .then((request) => request(this.axios, this.basePath));
-  }
-
-  /**
-   * Returns today studying hour.
-   * @summary Get today studying hour.
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof StudyingHourApi
-   */
-  public getTotalTodayStudyingHour(options?: AxiosRequestConfig) {
-    return StudyingHourApiFp(this.configuration)
-      .getTotalTodayStudyingHour(options)
       .then((request) => request(this.axios, this.basePath));
   }
 }

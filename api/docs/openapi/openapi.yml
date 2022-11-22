@@ -51,7 +51,7 @@ paths:
     get:
       tags:
         - StudyingHour
-      operationId: GetTotalTodayStudyingHour
+      operationId: GetTodayStudyingHour
       summary: Get today studying hour.
       description: Returns today studying hour.
       responses:
