@@ -28,15 +28,15 @@ paths:
       summary: Get Month Studying Hour by MonthId.
       description: Returns a single Month Studying Hour
       parameters:
-        - name: monthId
-          in: path
-          description: month id
-          required: true
-          schema:
-            type: integer
         - name: yearId
           in: path
           description: year id
+          required: true
+          schema:
+            type: integer
+        - name: monthId
+          in: path
+          description: month id
           required: true
           schema:
             type: integer
