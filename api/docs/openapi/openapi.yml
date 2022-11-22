@@ -10,6 +10,7 @@ paths:
     get:
       tags:
         - StudyingHour
+      operationId: GetTotalStudyingHour
       summary: Get total studying hour.
       description: Returns total studying hour.
       responses:
@@ -23,6 +24,7 @@ paths:
     get:
       tags:
         - StudyingHour
+      operationId: GetMonthStudyingHour
       summary: Get Month Studying Hour by MonthId.
       description: Returns a single Month Studying Hour
       parameters:
@@ -49,6 +51,7 @@ paths:
     get:
       tags:
         - StudyingHour
+      operationId: GetTotalTodayStudyingHour
       summary: Get today studying hour.
       description: Returns today studying hour.
       responses:
