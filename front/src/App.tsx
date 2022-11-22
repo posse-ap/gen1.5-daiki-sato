@@ -11,6 +11,7 @@ import NotFound from '@/pages/NotFound';
 function App() {
   return (
     <div>
+      {/* 多言語対応 https://itexplorer.hateblo.jp/entry/20170727-react-redux-react-i18next */}
       <I18nextProvider i18n={i18n}>
         <Routes>
           <Route path="/callback" element={<Callback />} />
