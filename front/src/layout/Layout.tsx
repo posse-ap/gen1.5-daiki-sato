@@ -7,7 +7,7 @@ import Footer from './Footer';
 const Layout = () => {
   return (
     <>
-      <Box sx={{ minHeight: 'calc(100vh - 30px)' }}>
+      <Box sx={{ minHeight: 'calc(100vh - 200px)' }}>
         {/* Header navigation */}
         {/* <Header
           nickname={authContext.nickname ?? ''}
@@ -27,7 +27,7 @@ const Layout = () => {
         /> */}
 
         {/* Main contents */}
-        <Box component="main" sx={{ paddingTop: 10 }}>
+        <Box component="main">
           <Outlet />
         </Box>
       </Box>
