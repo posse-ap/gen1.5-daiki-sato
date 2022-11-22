@@ -19,7 +19,7 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/TotalStudyingHour'
-  /month-studying-hour/{monthId}:
+  /month-studying-hour/{yearId}/{monthId}:
     get:
       tags:
         - StudyingHour
@@ -29,6 +29,12 @@ paths:
         - name: monthId
           in: path
           description: month id
+          required: true
+          schema:
+            type: integer
+        - name: yearId
+          in: path
+          description: year id
           required: true
           schema:
             type: integer
