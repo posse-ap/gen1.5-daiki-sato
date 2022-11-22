@@ -6,691 +6,93 @@ info:
 security:
   - Bearer: []
 paths:
-  /users:
+  /total-studying-hours:
     get:
       tags:
-        - Users
-      description: 全ユーザー情報取得
-      operationId: GetUsers
+        - StudyingHour
+      summary: Get total studying hour.
+      description: Returns total studying hour.
       responses:
         '200':
-          description: ユーザー情報取得成功
+          description: A single total studying hour
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/User'
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /users/{id}:
+                  $ref: '#/components/schemas/TotalStudyingHour'
+  /month-studying-hour/{monthId}:
     get:
       tags:
-        - Users
-      description: ユーザー情報1件取得
-      operationId: GetUser
+        - StudyingHour
+      summary: Get Month Studying Hour by MonthId.
+      description: Returns a single Month Studying Hour
       parameters:
-        - $ref: '#/components/parameters/UserId'
+        - name: monthId
+          in: path
+          description: month id
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
-          description: ユーザー情報取得成功
+          description: A single Month Studying Hour
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-        '401':
-          description: Unauthorized Error
-        '404':
-          description: Not Found
-        '500':
-          description: Internal Server Error
-    put:
-      tags:
-        - Users
-      description: ユーザー情報1件更新
-      operationId: UpdateUser
-      parameters:
-        - $ref: '#/components/parameters/UserId'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateUserBody'
-      responses:
-        '200':
-          description: ユーザー情報更新成功
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        '401':
-          description: Unauthorized Error
-        '404':
-          description: Not Found
-        '422':
-          description: Unprocessable Entity
-        '500':
-          description: Internal Server Error
-  /userinfo:
+                  $ref: '#/components/schemas/MonthStudyingHour'
+  /today-sftudying-hours:
     get:
       tags:
-        - UserInfo
-      description: 自分のユーザー情報取得
-      operationId: GetLoginUser
+        - StudyingHour
+      summary: Get today studying hour.
+      description: Returns today studying hour.
       responses:
         '200':
-          description: ユーザー情報取得成功
+          description: A single today studying hour
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Userinfo'
-        '500':
-          description: Internal Server Error
-  /fonts:
-    get:
-      tags:
-        - Font
-      description: 書体情報全件取得 コースを指定するとそのコースに対応した書体を全件取得
-      operationId: GetFonts
-      parameters:
-        - $ref: '#/components/parameters/CourseId'
+                  $ref: '#/components/schemas/TodayStudyingHour'
 
-      responses:
-        '200':
-          description: 書体情報取得成功
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Fonts'
-        '500':
-          description: Internal Server Error
-  /handbooks:
-    get:
-      tags:
-        - HandBook
-      description: 年月と書体と学年を指定すると対応する手本情報を取得
-      operationId: GetHandbooks
-      parameters:
-        - $ref: '#/components/parameters/Year'
-        - $ref: '#/components/parameters/Month'
-        - $ref: '#/components/parameters/FontId'
-        - $ref: '#/components/parameters/GradeId'
-      responses:
-        '200':
-          description: 手本取得成功
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Handbook'
-        '404':
-          description: Not Found
-        '500':
-          description: Internal Server Error
-    post:
-      tags:
-        - HandBook
-      description: 手本情報追加
-      operationId: CreateHandbook
-      requestBody:
-        $ref: '#/components/requestBodies/CreateHandbookBody'
-      responses:
-        '201':
-          description: 手本作成成功
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Handbook'
-        '401':
-          description: Unauthorized Error
-        '404':
-          description: Not Found
-        '422':
-          description: Unprocessable Entity
-        '500':
-          description: Internal Server Error
-  /handbooks/{id}:
-    get:
-      tags:
-        - HandBook
-      description: 手本情報取得
-      operationId: GetHandbook
-      parameters:
-        - $ref: '#/components/parameters/HandbookId'
-      responses:
-        '200':
-          description: 手本情報取得成功
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Handbook'
-    put:
-      tags:
-        - HandBook
-      description: 手本情報更新
-      operationId: UpdateHandbook
-      parameters:
-        - $ref: '#/components/parameters/HandbookId'
-      requestBody:
-        $ref: '#/components/requestBodies/UpdateHandbookBody'
-      responses:
-        '200':
-          description: 手本情報更新成功
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Handbook'
-        '401':
-          description: Unauthorized Error
-        '404':
-          description: Not Found
-        '422':
-          description: Unprocessable Entity
-        '500':
-          description: Internal Server Error
-  /handbooks/avail-terms:
-    get:
-      tags:
-        - HandBook
-      description: 手本情報が存在する、年と月の情報を取得
-      operationId: GetHandbooksAvailTerms
-      responses:
-        '200':
-          description: 年と月の情報取得成功
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HandbooksAvailTerms'
-        '500':
-          description: Internal Server Error
-  /video:
-    post:
-      tags:
-        - Video
-      description: 動画ファイルアップロード
-      operationId: UploadVideo
-      requestBody:
-        $ref: '#/components/requestBodies/VideoBody'
-      responses:
-        '201':
-          description: 動画アップロード完了
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  video_id:
-                    description: 動画ID
-                    type: integer
-                    example: 1234567890
-        '401':
-          description: Unauthorized Error
-        '422':
-          description: Unprocessable Entity
-        '500':
-          description: Internal Server Error
-  /image:
-    post:
-      tags:
-        - Image
-      description: 一般ユーザーの画像ファイルアップロード
-      operationId: UploadImage
-      requestBody:
-        $ref: '#/components/requestBodies/ImageBody'
-      responses:
-        '201':
-          description: 画像アップロード完了
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  image_url:
-                    type: integer
-                    example: handbookImage/2022/10/adult/kaisho/demonstration/手本_楷書_一般_202210-1.jpg
-        '401':
-          description: Unauthorized Error
-        '422':
-          description: Unprocessable Entity
-        '500':
-          description: Internal Server Error
 components:
   securitySchemes:
     Bearer:
       type: http
       scheme: bearer
       description: Credentials or access token for API
-  parameters:
-    UserId:
-      name: id
-      in: path
-      description: ユーザーを識別するID
-      required: true
-      schema:
-        type: string
-        format: uuid
-        example: 'fd7e7dd8-8ea6-4af9-8d56-11b8ef4486c9'
-    CourseId:
-      name: course_type
-      in: query
-      description: コースID(一般/1 学生/2)
-      schema:
-        type: integer
-        example: 1
-    Year:
-      name: year
-      in: query
-      description: 年を指定する
-      schema:
-        type: integer
-        example: 2022
-    Month:
-      name: month
-      in: query
-      description: 月を指定する
-      schema:
-        type: integer
-        example: 9
-    FontId:
-      name: font_id
-      in: query
-      description: 書体ID
-      schema:
-        type: integer
-        example: 4
-    GradeId:
-      name: grade_id
-      in: query
-      description: 学年ID
-      schema:
-        type: integer
-        example: 2
-    HandbookId:
-      name: id
-      in: path
-      description: 手本情報更新で手本を識別するID
-      required: true
-      schema:
-        type: integer
-        example: 1
-    isExplanation:
-      name: is_explanation
-      in: query
-      description: 手本かどうか
-      schema:
-        type: boolean
-        example: true
-    isDemonstration:
-      name: is_demonstration
-      in: query
-      description: 解説かどうか
-      schema:
-        type: boolean
-        example: true
-  requestBodies:
-    UpdateUserBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateUser'
-    UpdateHandbookBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateHandbook'
-    CreateHandbookBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateHandbook'
-    VideoBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-              - name
-              - file
-            properties:
-              name:
-                type: string
-              file:
-                description: 動画ファイル
-                type: string
-                format: binary
-    ImageBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              year:
-                type: integer
-              month:
-                type: integer
-              gradeId:
-                type: integer
-                nullable: true
-              fontId:
-                type: integer
-              is_demonstration:
-                type: boolean
-              is_explanation:
-                type: boolean
-              image_file:
-                type: string
-                format: binary
   schemas:
-    UserId:
-      description: ユーザーのUUID
+    TotalStudyingHour:
+      type: object
+      required:
+        - id
       properties:
         id:
-          type: string
-          example: 'fd7e7dd8-8ea6-4af9-8d56-11b8ef4486c9'
-    CompletedSignUp:
-      description: ユーザーが本登録済みかどうか
-      properties:
-        completed_sign_up:
-          type: boolean
-    User:
-      description: レスポンスで返すユーザー情報
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/UserBase'
-        - $ref: '#/components/schemas/UserId'
-      required:
-        - id
-    Userinfo:
-      description: ログインユーザーの情報
-      allOf:
-        - $ref: '#/components/schemas/UserBase'
-        - $ref: '#/components/schemas/UserId'
-        - $ref: '#/components/schemas/CompletedSignUp'
-      required:
-        - id
-        - completed_sign_up
-    UpdateUser:
-      description: 更新する際にリクエストに含めるユーザー情報
-      allOf:
-        - $ref: '#/components/schemas/UserBase'
-        - $ref: '#/components/schemas/CompletedSignUp'
-    UserBase:
-      description: ユーザー関連スキーマの共通部分
-      type: object
-      required:
-        - is_admin
-        - is_student
-        - last_name
-        - first_name
-        - nickname
-        - course_type
-        - email
-        - gender_id
-        - birthday
-        - prefecture
-        - is_experienced
-      properties:
-        roles:
-          type: array
-          items:
-            type: object
-            properties:
-              role_name:
-                type: string
-                example: 'admin'
-              display_name:
-                type: string
-                example: '管理者'
-        last_name:
-          type: string
-          example: '山田'
-        first_name:
-          type: string
-          example: '太郎'
-        nickname:
-          type: string
-          example: '山風'
-        course_type:
           type: integer
           example: 1
-        email:
-          type: string
-          example: 'saikan1@email.com'
-        gender_id:
+        total_studying_hour:
           type: integer
-          example: 1
-        birthday:
-          type: string
-          example: '2002-09-11'
-        prefecture:
-          type: string
-          example: '東京都'
-        is_experienced:
-          type: boolean
-          example: true
-        parent_last_name:
-          type: string
-          example: '才幹'
-        parent_first_name:
-          type: string
-          example: '五郎'
-    Fonts:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-            example: 1
-          font_name:
-            type: string
-            example: '楷書'
-          course_type:
-            type: integer
-            example: 2
-    Font:
-      type: object
-      required:
-        - font
-      properties:
-        font:
-          type: object
-          required:
-            - id
-            - name
-          properties:
-            id:
-              type: integer
-              example: 1
-            name:
-              type: string
-              example: '楷書'
-    Handbook:
+          example: 1348
+    MonthStudyingHour:
       type: object
       required:
         - id
-        - year
-        - month
-        - grade_id
-        - demonstration
-        - explanation
-      allOf:
-        - $ref: '#/components/schemas/Font'
-        - type: object
-          properties:
-            id:
-              type: integer
-              example: 15
-            year:
-              type: integer
-              example: 2022
-            month:
-              type: integer
-              example: 9
-            grade_id:
-              type: integer
-              nullable: true
-              example: 2
-            demonstration:
-              type: object
-              required:
-                - videos
-                - images
-                - comment
-              properties:
-                video_ids:
-                  type: array
-                  items:
-                    description: 動画ID
-                    type: integer
-                    example: 1234567890
-                image_urls:
-                  type: array
-                  items:
-                    description: 画像URL
-                    type: string
-                    example: 'https://www.example.com'
-                comment:
-                  type: string
-                  nullable: true
-                  example: '10月の楷書課題です。出典: 万葉集'
-            explanation:
-              type: object
-              required:
-                - videos
-                - images
-                - comment
-              properties:
-                video_ids:
-                  type: array
-                  items:
-                    description: 動画ID
-                    type: integer
-                    example: 1234567890
-                image_urls:
-                  type: array
-                  items:
-                    description: 画像URL
-                    type: string
-                    example: 'https://www.example.com'
-                comment:
-                  type: string
-                  nullable: true
-                  example: 'とめ・はねを意識しましょう。'
-    CreateHandbook:
-      type: object
-      required:
-        - year
-        - month
-        - font_id
-        - grade_id
-      allOf:
-        - $ref: '#/components/schemas/UpdateHandbook'
-        - properties:
-            year:
-              type: integer
-              example: 2022
-            month:
-              type: integer
-              example: 9
-            font_id:
-              type: integer
-              example: 4
-            grade_id:
-              type: integer
-              nullable: true
-              example: 2
-    UpdateHandbook:
-      type: object
-      required:
-        - demonstration
-        - explanation
       properties:
-        demonstration:
-          type: object
-          required:
-            - videos
-            - images
-            - comment
-          properties:
-            videos:
-              type: array
-              items:
-                description: 動画ファイル
-                type: string
-                format: binary
-            images:
-              type: array
-              items:
-                description: 画像ファイル
-                type: string
-                format: binary
-            comment:
-              type: string
-              nullable: true
-              example: '10月の楷書課題です。出典: 万葉集'
-        explanation:
-          type: object
-          required:
-            - videos
-            - images
-            - comment
-          properties:
-            videos:
-              type: array
-              items:
-                description: 動画ファイル
-                type: string
-                format: binary
-            images:
-              type: array
-              items:
-                description: 画像ファイル
-                type: string
-                format: binary
-            comment:
-              type: string
-              nullable: true
-              example: 'とめ・はねを意識しましょう。'
-    HandbooksAvailTerms:
-      type: array
-      items:
-        type: object
-        properties:
-          year:
-            type: integer
-            example: 2022
-          month:
-            type: integer
-            example: 2
-    Error:
-      type: object
-      required:
-        - code
-        - message
-      properties:
-        code:
+        id:
           type: integer
-          format: int32
-        message:
-          type: string
+          example: 1
+        month_studying_hour:
+          type: integer
+          example: 120
+    TodayStudyingHour:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          example: 1
+        today_studying_hour:
+          type: integer
+          example: 3
 tags:
-  - name: Users
-    description: ユーザーに関する API 群
-  - name: UserInfo
-    description: ログイン済みのユーザーに関する API
-  - name: Font
-    description: 書体情報に関する API
-  - name: HandBook
-    description: 手本情報に関する API 群
-  - name: Video
-    description: 動画ファイルアップロードに関する API
-  - name: Image
-    description: 画像ファイルアップロードに関する API
+  - name: StudyingHour
+    description: Access to StudyingHour

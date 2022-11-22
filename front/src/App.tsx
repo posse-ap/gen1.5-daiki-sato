@@ -5,7 +5,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from '@/layout/Layout';
 import i18n from '@/locales/i18n';
 import Callback from '@/pages/callback/index';
-import MyPage from '@/pages/MyPage';
+import Home from '@/pages/index';
 import NotFound from '@/pages/NotFound';
 
 function App() {
@@ -16,9 +16,8 @@ function App() {
           <Route path="/callback" element={<Callback />} />
 
           <Route path="" element={<Layout />}>
-            <Route path="/" element={<Navigate to="/" />} />
-            <Route path="/mypage" element={<MyPage />} />
-
+            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/home" element={<Home />} />
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
           </Route>
