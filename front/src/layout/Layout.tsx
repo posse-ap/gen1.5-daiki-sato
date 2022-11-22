@@ -1,15 +1,30 @@
 import { Box } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { createContext } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import Footer from './Footer';
-
+interface ContextInterface {
+  thisYear: number;
+  thisMonth: number;
+}
+export const MonthYearContext = createContext<ContextInterface | undefined>(undefined);
 const Layout = () => {
+  const today = new Date();
+  const [thisYear, setThisYear] = useState<number>(0);
+  const [thisMonth, setThisMonth] = useState<number>(0);
+  const value = { thisYear, thisMonth };
+
+  useEffect(() => {
+    setThisYear(today.getFullYear());
+    setThisMonth(today.getMonth() + 1);
+  }, []);
+
   return (
     <>
-      <Box sx={{ minHeight: 'calc(100vh - 200px)' }}>
-        {/* Header navigation */}
-        {/* <Header
+      <MonthYearContext.Provider value={value}>
+        <Box sx={{ minHeight: 'calc(100vh - 200px)' }}>
+          {/* <Header
           nickname={authContext.nickname ?? ''}
           menuEl={anchorEl}
           handleAccountMenuOpen={handleAccountMenuOpen}
@@ -17,23 +32,15 @@ const Layout = () => {
           handleMenuClose={handleMenuClose}
           handleMenuItemClick={handleMenuItemClick}
         /> */}
-
-        {/* Drawer menu */}
-        {/* <SideMenu
-          isAdmin={authContext?.roles?.some((role) => role.role_name === 'admin')}
-          open={isMenuOpen}
-          handleMenuItemClick={handleMenuItemClick}
-          onClose={handleMenuClose}
-        /> */}
-
-        {/* Main contents */}
-        <Box component="main">
-          <Outlet />
+          {/* Main contents */}
+          <Box component="main">
+            <Outlet />
+          </Box>
         </Box>
-      </Box>
 
-      {/* Footer */}
-      <Footer />
+        {/* Footer */}
+        <Footer />
+      </MonthYearContext.Provider>
     </>
   );
 };
