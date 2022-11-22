@@ -8,7 +8,11 @@ interface ContextInterface {
   thisYear: number;
   thisMonth: number;
 }
-export const MonthYearContext = createContext<ContextInterface | undefined>(undefined);
+const value = {
+  thisYear: 0,
+  thisMonth: 0,
+};
+export const MonthYearContext = createContext<ContextInterface>(value);
 const Layout = () => {
   const today = new Date();
   const [thisYear, setThisYear] = useState<number>(0);
@@ -23,7 +27,7 @@ const Layout = () => {
   return (
     <>
       <MonthYearContext.Provider value={value}>
-        <Box sx={{ minHeight: 'calc(100vh - 200px)' }}>
+        <Box sx={{ backgroundColor: '#f5f5f5', minHeight: 'calc(100vh - 200px)' }}>
           {/* <Header
           nickname={authContext.nickname ?? ''}
           menuEl={anchorEl}

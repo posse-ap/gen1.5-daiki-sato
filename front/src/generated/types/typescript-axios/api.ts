@@ -48,7 +48,7 @@ export interface MonthStudyingHour {
    * @type {number}
    * @memberof MonthStudyingHour
    */
-  month_studying_hour?: number;
+  month_studying_hour: number;
 }
 /**
  *
@@ -67,7 +67,7 @@ export interface TodayStudyingHour {
    * @type {number}
    * @memberof TodayStudyingHour
    */
-  today_studying_hour?: number;
+  today_studying_hour: number;
 }
 /**
  *
@@ -86,7 +86,7 @@ export interface TotalStudyingHour {
    * @type {number}
    * @memberof TotalStudyingHour
    */
-  total_studying_hour?: number;
+  total_studying_hour: number;
 }
 
 /**
@@ -98,23 +98,23 @@ export const StudyingHourApiAxiosParamCreator = function (configuration?: Config
     /**
      * Returns a single Month Studying Hour
      * @summary Get Month Studying Hour by MonthId.
-     * @param {number} monthId month id
      * @param {number} yearId year id
+     * @param {number} monthId month id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    monthStudyingHourYearIdMonthIdGet: async (
-      monthId: number,
+    getMonthStudyingHour: async (
       yearId: number,
+      monthId: number,
       options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
-      // verify required parameter 'monthId' is not null or undefined
-      assertParamExists('monthStudyingHourYearIdMonthIdGet', 'monthId', monthId);
       // verify required parameter 'yearId' is not null or undefined
-      assertParamExists('monthStudyingHourYearIdMonthIdGet', 'yearId', yearId);
+      assertParamExists('getMonthStudyingHour', 'yearId', yearId);
+      // verify required parameter 'monthId' is not null or undefined
+      assertParamExists('getMonthStudyingHour', 'monthId', monthId);
       const localVarPath = `/month-studying-hour/{yearId}/{monthId}`
-        .replace(`{${'monthId'}}`, encodeURIComponent(String(monthId)))
-        .replace(`{${'yearId'}}`, encodeURIComponent(String(yearId)));
+        .replace(`{${'yearId'}}`, encodeURIComponent(String(yearId)))
+        .replace(`{${'monthId'}}`, encodeURIComponent(String(monthId)));
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
       let baseOptions;
@@ -125,10 +125,6 @@ export const StudyingHourApiAxiosParamCreator = function (configuration?: Config
       const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
       const localVarHeaderParameter = {} as any;
       const localVarQueryParameter = {} as any;
-
-      // authentication Bearer required
-      // http bearer authentication required
-      await setBearerAuthToObject(localVarHeaderParameter, configuration);
 
       setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -149,7 +145,7 @@ export const StudyingHourApiAxiosParamCreator = function (configuration?: Config
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    todaySftudyingHoursGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+    getTodayStudyingHour: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
       const localVarPath = `/today-sftudying-hours`;
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -161,10 +157,6 @@ export const StudyingHourApiAxiosParamCreator = function (configuration?: Config
       const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
       const localVarHeaderParameter = {} as any;
       const localVarQueryParameter = {} as any;
-
-      // authentication Bearer required
-      // http bearer authentication required
-      await setBearerAuthToObject(localVarHeaderParameter, configuration);
 
       setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -185,7 +177,7 @@ export const StudyingHourApiAxiosParamCreator = function (configuration?: Config
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    totalStudyingHoursGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+    getTotalStudyingHour: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
       const localVarPath = `/total-studying-hours`;
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -197,10 +189,6 @@ export const StudyingHourApiAxiosParamCreator = function (configuration?: Config
       const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
       const localVarHeaderParameter = {} as any;
       const localVarQueryParameter = {} as any;
-
-      // authentication Bearer required
-      // http bearer authentication required
-      await setBearerAuthToObject(localVarHeaderParameter, configuration);
 
       setSearchParams(localVarUrlObj, localVarQueryParameter);
       let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -228,19 +216,19 @@ export const StudyingHourApiFp = function (configuration?: Configuration) {
     /**
      * Returns a single Month Studying Hour
      * @summary Get Month Studying Hour by MonthId.
-     * @param {number} monthId month id
      * @param {number} yearId year id
+     * @param {number} monthId month id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async monthStudyingHourYearIdMonthIdGet(
-      monthId: number,
+    async getMonthStudyingHour(
       yearId: number,
+      monthId: number,
       options?: AxiosRequestConfig
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MonthStudyingHour>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.monthStudyingHourYearIdMonthIdGet(
-        monthId,
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getMonthStudyingHour(
         yearId,
+        monthId,
         options
       );
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -251,10 +239,10 @@ export const StudyingHourApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async todaySftudyingHoursGet(
+    async getTodayStudyingHour(
       options?: AxiosRequestConfig
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TodayStudyingHour>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.todaySftudyingHoursGet(options);
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getTodayStudyingHour(options);
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
     },
     /**
@@ -263,10 +251,10 @@ export const StudyingHourApiFp = function (configuration?: Configuration) {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async totalStudyingHoursGet(
+    async getTotalStudyingHour(
       options?: AxiosRequestConfig
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TotalStudyingHour>> {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.totalStudyingHoursGet(options);
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getTotalStudyingHour(options);
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
     },
   };
@@ -286,18 +274,18 @@ export const StudyingHourApiFactory = function (
     /**
      * Returns a single Month Studying Hour
      * @summary Get Month Studying Hour by MonthId.
-     * @param {number} monthId month id
      * @param {number} yearId year id
+     * @param {number} monthId month id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    monthStudyingHourYearIdMonthIdGet(
-      monthId: number,
+    getMonthStudyingHour(
       yearId: number,
+      monthId: number,
       options?: any
     ): AxiosPromise<MonthStudyingHour> {
       return localVarFp
-        .monthStudyingHourYearIdMonthIdGet(monthId, yearId, options)
+        .getMonthStudyingHour(yearId, monthId, options)
         .then((request) => request(axios, basePath));
     },
     /**
@@ -306,8 +294,8 @@ export const StudyingHourApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    todaySftudyingHoursGet(options?: any): AxiosPromise<TodayStudyingHour> {
-      return localVarFp.todaySftudyingHoursGet(options).then((request) => request(axios, basePath));
+    getTodayStudyingHour(options?: any): AxiosPromise<TodayStudyingHour> {
+      return localVarFp.getTodayStudyingHour(options).then((request) => request(axios, basePath));
     },
     /**
      * Returns total studying hour.
@@ -315,8 +303,8 @@ export const StudyingHourApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    totalStudyingHoursGet(options?: any): AxiosPromise<TotalStudyingHour> {
-      return localVarFp.totalStudyingHoursGet(options).then((request) => request(axios, basePath));
+    getTotalStudyingHour(options?: any): AxiosPromise<TotalStudyingHour> {
+      return localVarFp.getTotalStudyingHour(options).then((request) => request(axios, basePath));
     },
   };
 };
@@ -331,19 +319,15 @@ export class StudyingHourApi extends BaseAPI {
   /**
    * Returns a single Month Studying Hour
    * @summary Get Month Studying Hour by MonthId.
-   * @param {number} monthId month id
    * @param {number} yearId year id
+   * @param {number} monthId month id
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof StudyingHourApi
    */
-  public monthStudyingHourYearIdMonthIdGet(
-    monthId: number,
-    yearId: number,
-    options?: AxiosRequestConfig
-  ) {
+  public getMonthStudyingHour(yearId: number, monthId: number, options?: AxiosRequestConfig) {
     return StudyingHourApiFp(this.configuration)
-      .monthStudyingHourYearIdMonthIdGet(monthId, yearId, options)
+      .getMonthStudyingHour(yearId, monthId, options)
       .then((request) => request(this.axios, this.basePath));
   }
 
@@ -354,9 +338,9 @@ export class StudyingHourApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof StudyingHourApi
    */
-  public todaySftudyingHoursGet(options?: AxiosRequestConfig) {
+  public getTodayStudyingHour(options?: AxiosRequestConfig) {
     return StudyingHourApiFp(this.configuration)
-      .todaySftudyingHoursGet(options)
+      .getTodayStudyingHour(options)
       .then((request) => request(this.axios, this.basePath));
   }
 
@@ -367,9 +351,9 @@ export class StudyingHourApi extends BaseAPI {
    * @throws {RequiredError}
    * @memberof StudyingHourApi
    */
-  public totalStudyingHoursGet(options?: AxiosRequestConfig) {
+  public getTotalStudyingHour(options?: AxiosRequestConfig) {
     return StudyingHourApiFp(this.configuration)
-      .totalStudyingHoursGet(options)
+      .getTotalStudyingHour(options)
       .then((request) => request(this.axios, this.basePath));
   }
 }
