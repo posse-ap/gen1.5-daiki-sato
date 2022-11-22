@@ -1,17 +1,15 @@
 import { KeyboardDoubleArrowLeft, KeyboardDoubleArrowRight } from '@mui/icons-material';
 import { Box, IconButton, Typography } from '@mui/material';
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
+
+import { MonthYearContext } from '@/layout/Layout';
 
 export default function Footer() {
-  const today = new Date();
-  const [thisYear, setThisYear] = useState<number>(0);
-  const [thisMonth, setThisMonth] = useState<number>(0);
+  const value = useContext(MonthYearContext);
+  const thisYear = value?.thisYear;
+  const thisMonth = value?.thisMonth;
 
-  useEffect(() => {
-    setThisYear(today.getFullYear());
-    setThisMonth(today.getMonth() + 1);
-  }, []);
   return (
     <Box
       component="footer"
