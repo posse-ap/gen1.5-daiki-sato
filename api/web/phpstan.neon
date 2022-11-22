@@ -1,0 +1,11 @@
+includes:
+	- ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+	paths:
+		- app
+	level: 8
+	ignoreErrors:
+		- '#Call to an undefined static method Vimeo\\Laravel\\Facades\\Vimeo::[a-zA-Z0-9\\_]+\(\)#'
+	checkGenericClassInNonGenericObjectType: false
+	checkMissingIterableValueType: false
