@@ -1,0 +1,46 @@
+{
+  "title": "アカウント登録",
+  "lead": "才幹書院サービスを利用するに、以下の情報をご登録ください。",
+  "messages": {
+    "nickname_required": "ユーザー名を入力してください",
+    "nickname_max_length": "30文字以内で入力してください",
+    "last_name_required": "姓を入力してください",
+    "first_name_required": "名前を入力してください",
+    "name_max_length": "20文字以内で入力してください",
+    "gender_required": "性別を選択してください",
+    "prefecture_required": "都道府県を選択してください",
+    "birthday_required": "生年月日を入力してください",
+    "birthday_format": "日付を正しく入力してください",
+    "experience_required": "書道経験を選択してください",
+    "register_success": "アカウントを登録しました",
+    "register_error": "アカウント登録に失敗しました"
+  },
+  "labels": {
+    "email": "メールアドレス",
+    "nickname": "ユーザー名",
+    "name": "本名",
+    "last_name": "姓",
+    "first_name": "名",
+    "gender": "性別",
+    "prefecture": "都道府県",
+    "birthday": "生年月日",
+    "parent_name": "保護者氏名",
+    "course": "受講コース",
+    "your_course": "あなたの受講コース",
+    "grade": "学年",
+    "course_adult": "一般コース",
+    "course_student": "学生コース",
+    "saikan_student": "競書生",
+    "female": "女性",
+    "male": "男性",
+    "no_answer": "未回答",
+    "experience": "書道経験",
+    "experience_yes": "はい",
+    "experience_no": "いいえ"
+  },
+  "buttons": {
+    "back": "戻る",
+    "next": "確認画面へ",
+    "register": "登録"
+  }
+}

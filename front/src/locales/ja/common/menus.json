@@ -1,0 +1,12 @@
+{
+  "account_menus": {
+    "my_page": "マイページ",
+    "logout": "ログアウト"
+  },
+  "side_menus": {
+    "handbook_management": "手本管理",
+    "user_management": "ユーザー管理",
+    "handbook": "お手本を見る",
+    "handbook_submission": "課題を提出する"
+  }
+}

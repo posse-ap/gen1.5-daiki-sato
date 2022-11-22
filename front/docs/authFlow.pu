@@ -1,0 +1,43 @@
+@startuml
+
+Login -> callback : Redirect with idToken
+
+Login <-- callback : Empty idToken
+
+callback -> callback : Store idToken to LS
+
+callback -> Auth
+note left
+callbackではuserInfoは取得しない
+token処理のみに絞る
+end note
+
+Auth -> Auth : Fetch userinfo
+note left
+userinfoのcompleted_sign_upで
+アカウント登録画面かroot画面かを判断
+end note
+
+Auth --> Login : Fail in fetching
+
+Auth -> CreateAccount : completed_sign_up === false
+
+CreateAccount -> CreateAccount : Assign tenant_id
+note left
+backendで
+デフォルトテナントを登録
+end note
+
+CreateAccount -> Page : Redirect to root page
+note left
+Rolesに応じた
+routing
+end note
+
+Auth -> Page : Success in authentication
+note left
+Rolesに応じた
+routing
+end note
+
+@enduml

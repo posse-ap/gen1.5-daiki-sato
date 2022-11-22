@@ -1,8 +1,0 @@
-[submodule "front"]
-	path = front
-	url = git@github.com:Anti-Pattern-Inc/antipattern-portal-site-front.git
-	branch = develop
-[submodule "api"]
-	path = api
-	url = git@github.com:Anti-Pattern-Inc/antipattern-portal-site-api.git
-	branch = develop

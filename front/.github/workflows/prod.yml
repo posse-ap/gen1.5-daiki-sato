@@ -1,0 +1,36 @@
+name: Deploy Prod
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::794121341683:role/GithubActionsRole
+          role-session-name: github-actions-${{ github.run_id }}
+          aws-region: ap-northeast-1
+
+      - name: Get AWS Account
+        run: aws sts get-caller-identity
+
+      - name: Build
+        run: |
+          mv .env.prod .env
+          yarn install
+          yarn build
+
+      - name: Deploy
+        run: |
+          aws s3 sync ./build/ s3://front.prod.saikan.community/ --delete --exact-timestamps
+          aws cloudfront create-invalidation --distribution-id E35J5WBH07UAWV --paths "/*"
