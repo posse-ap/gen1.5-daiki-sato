@@ -48,7 +48,7 @@ export interface MonthStudyingHour {
    * @type {number}
    * @memberof MonthStudyingHour
    */
-  month_studying_hour?: number;
+  month_studying_hour: number;
 }
 /**
  *
@@ -67,7 +67,7 @@ export interface TodayStudyingHour {
    * @type {number}
    * @memberof TodayStudyingHour
    */
-  today_studying_hour?: number;
+  today_studying_hour: number;
 }
 /**
  *
@@ -86,7 +86,7 @@ export interface TotalStudyingHour {
    * @type {number}
    * @memberof TotalStudyingHour
    */
-  total_studying_hour?: number;
+  total_studying_hour: number;
 }
 
 /**

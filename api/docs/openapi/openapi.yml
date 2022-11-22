@@ -73,6 +73,7 @@ components:
       type: object
       required:
         - id
+        - total_studying_hour
       properties:
         id:
           type: integer
@@ -84,6 +85,7 @@ components:
       type: object
       required:
         - id
+        - month_studying_hour
       properties:
         id:
           type: integer
@@ -95,6 +97,7 @@ components:
       type: object
       required:
         - id
+        - today_studying_hour
       properties:
         id:
           type: integer
