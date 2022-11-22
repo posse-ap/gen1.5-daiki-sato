@@ -3,8 +3,8 @@ info:
   version: 1.0.0
   title: Saikan-Shoin API
   description: API for Saikan-Shoin.
-security:
-  - Bearer: []
+# security:
+#   - Bearer: []
 paths:
   /total-studying-hours:
     get:
@@ -63,11 +63,11 @@ paths:
                   $ref: '#/components/schemas/TodayStudyingHour'
 
 components:
-  securitySchemes:
-    Bearer:
-      type: http
-      scheme: bearer
-      description: Credentials or access token for API
+  # securitySchemes:
+  #   Bearer:
+  #     type: http
+  #     scheme: bearer
+  #     description: Credentials or access token for API
   schemas:
     TotalStudyingHour:
       type: object
