@@ -98,23 +98,23 @@ export const StudyingHourApiAxiosParamCreator = function (configuration?: Config
     /**
      * Returns a single Month Studying Hour
      * @summary Get Month Studying Hour by MonthId.
-     * @param {number} monthId month id
      * @param {number} yearId year id
+     * @param {number} monthId month id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getMonthStudyingHour: async (
-      monthId: number,
       yearId: number,
+      monthId: number,
       options: AxiosRequestConfig = {}
     ): Promise<RequestArgs> => {
-      // verify required parameter 'monthId' is not null or undefined
-      assertParamExists('getMonthStudyingHour', 'monthId', monthId);
       // verify required parameter 'yearId' is not null or undefined
       assertParamExists('getMonthStudyingHour', 'yearId', yearId);
+      // verify required parameter 'monthId' is not null or undefined
+      assertParamExists('getMonthStudyingHour', 'monthId', monthId);
       const localVarPath = `/month-studying-hour/{yearId}/{monthId}`
-        .replace(`{${'monthId'}}`, encodeURIComponent(String(monthId)))
-        .replace(`{${'yearId'}}`, encodeURIComponent(String(yearId)));
+        .replace(`{${'yearId'}}`, encodeURIComponent(String(yearId)))
+        .replace(`{${'monthId'}}`, encodeURIComponent(String(monthId)));
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
       let baseOptions;
@@ -216,19 +216,19 @@ export const StudyingHourApiFp = function (configuration?: Configuration) {
     /**
      * Returns a single Month Studying Hour
      * @summary Get Month Studying Hour by MonthId.
-     * @param {number} monthId month id
      * @param {number} yearId year id
+     * @param {number} monthId month id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getMonthStudyingHour(
-      monthId: number,
       yearId: number,
+      monthId: number,
       options?: AxiosRequestConfig
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MonthStudyingHour>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.getMonthStudyingHour(
-        monthId,
         yearId,
+        monthId,
         options
       );
       return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
@@ -274,18 +274,18 @@ export const StudyingHourApiFactory = function (
     /**
      * Returns a single Month Studying Hour
      * @summary Get Month Studying Hour by MonthId.
-     * @param {number} monthId month id
      * @param {number} yearId year id
+     * @param {number} monthId month id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     getMonthStudyingHour(
-      monthId: number,
       yearId: number,
+      monthId: number,
       options?: any
     ): AxiosPromise<MonthStudyingHour> {
       return localVarFp
-        .getMonthStudyingHour(monthId, yearId, options)
+        .getMonthStudyingHour(yearId, monthId, options)
         .then((request) => request(axios, basePath));
     },
     /**
@@ -321,15 +321,15 @@ export class StudyingHourApi extends BaseAPI {
   /**
    * Returns a single Month Studying Hour
    * @summary Get Month Studying Hour by MonthId.
-   * @param {number} monthId month id
    * @param {number} yearId year id
+   * @param {number} monthId month id
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof StudyingHourApi
    */
-  public getMonthStudyingHour(monthId: number, yearId: number, options?: AxiosRequestConfig) {
+  public getMonthStudyingHour(yearId: number, monthId: number, options?: AxiosRequestConfig) {
     return StudyingHourApiFp(this.configuration)
-      .getMonthStudyingHour(monthId, yearId, options)
+      .getMonthStudyingHour(yearId, monthId, options)
       .then((request) => request(this.axios, this.basePath));
   }
 
