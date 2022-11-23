@@ -133,24 +133,18 @@ components:
           type: integer
           example: 3
     OneMonthStudyTime:
-      type: object
-      required:
-        - oneMonthStudyTime
-      properties:
-        oneMonthStudyTime:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-                example: 1
-              date:
-                type: integer
-                example: 1
-              study_hour:
-                type: integer
-                example: 3
+      type: array
+      items:
+        properties:
+          id:
+            type: integer
+            example: 1
+          date:
+            type: integer
+            example: 1
+          study_hour:
+            type: integer
+            example: 3
 tags:
   - name: StudyingHour
     description: Access to StudyingHour
