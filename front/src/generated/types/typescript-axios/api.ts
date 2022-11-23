@@ -53,38 +53,25 @@ export interface MonthStudyingHour {
 /**
  *
  * @export
- * @interface OneMonthStudyTime
+ * @interface OneMonthStudyTimeInner
  */
-export interface OneMonthStudyTime {
-  /**
-   *
-   * @type {Array<OneMonthStudyTimeOneMonthStudyTimeInner>}
-   * @memberof OneMonthStudyTime
-   */
-  oneMonthStudyTime: Array<OneMonthStudyTimeOneMonthStudyTimeInner>;
-}
-/**
- *
- * @export
- * @interface OneMonthStudyTimeOneMonthStudyTimeInner
- */
-export interface OneMonthStudyTimeOneMonthStudyTimeInner {
+export interface OneMonthStudyTimeInner {
   /**
    *
    * @type {number}
-   * @memberof OneMonthStudyTimeOneMonthStudyTimeInner
+   * @memberof OneMonthStudyTimeInner
    */
   id?: number;
   /**
    *
    * @type {number}
-   * @memberof OneMonthStudyTimeOneMonthStudyTimeInner
+   * @memberof OneMonthStudyTimeInner
    */
   date?: number;
   /**
    *
    * @type {number}
-   * @memberof OneMonthStudyTimeOneMonthStudyTimeInner
+   * @memberof OneMonthStudyTimeInner
    */
   study_hour?: number;
 }
@@ -327,7 +314,9 @@ export const StudyingHourApiFp = function (configuration?: Configuration) {
       yearId: number,
       monthId: number,
       options?: AxiosRequestConfig
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OneMonthStudyTime>> {
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<OneMonthStudyTimeInner>>
+    > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.getOneMonthStudyTime(
         yearId,
         monthId,
@@ -402,7 +391,7 @@ export const StudyingHourApiFactory = function (
       yearId: number,
       monthId: number,
       options?: any
-    ): AxiosPromise<OneMonthStudyTime> {
+    ): AxiosPromise<Array<OneMonthStudyTimeInner>> {
       return localVarFp
         .getOneMonthStudyTime(yearId, monthId, options)
         .then((request) => request(axios, basePath));
