@@ -53,6 +53,44 @@ export interface MonthStudyingHour {
 /**
  *
  * @export
+ * @interface OneMonthStudyTime
+ */
+export interface OneMonthStudyTime {
+  /**
+   *
+   * @type {Array<OneMonthStudyTimeOneMonthStudyTimeInner>}
+   * @memberof OneMonthStudyTime
+   */
+  oneMonthStudyTime: Array<OneMonthStudyTimeOneMonthStudyTimeInner>;
+}
+/**
+ *
+ * @export
+ * @interface OneMonthStudyTimeOneMonthStudyTimeInner
+ */
+export interface OneMonthStudyTimeOneMonthStudyTimeInner {
+  /**
+   *
+   * @type {number}
+   * @memberof OneMonthStudyTimeOneMonthStudyTimeInner
+   */
+  id?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof OneMonthStudyTimeOneMonthStudyTimeInner
+   */
+  date?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof OneMonthStudyTimeOneMonthStudyTimeInner
+   */
+  study_hour?: number;
+}
+/**
+ *
+ * @export
  * @interface TodayStudyingHour
  */
 export interface TodayStudyingHour {
@@ -97,7 +135,7 @@ export const StudyingHourApiAxiosParamCreator = function (configuration?: Config
   return {
     /**
      * Returns a single Month Studying Hour
-     * @summary Get Month Studying Hour by MonthId.
+     * @summary Get Month Studying Hour by yearId and MonthId.
      * @param {number} yearId year id
      * @param {number} monthId month id
      * @param {*} [options] Override http request option.
@@ -113,6 +151,50 @@ export const StudyingHourApiAxiosParamCreator = function (configuration?: Config
       // verify required parameter 'monthId' is not null or undefined
       assertParamExists('getMonthStudyingHour', 'monthId', monthId);
       const localVarPath = `/month-studying-hour/{yearId}/{monthId}`
+        .replace(`{${'yearId'}}`, encodeURIComponent(String(yearId)))
+        .replace(`{${'monthId'}}`, encodeURIComponent(String(monthId)));
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+      let baseOptions;
+      if (configuration) {
+        baseOptions = configuration.baseOptions;
+      }
+
+      const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter);
+      let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      };
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * Returns One Month Study Time
+     * @summary Get One Month Study Time by yearId and MonthId.
+     * @param {number} yearId year id
+     * @param {number} monthId month id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getOneMonthStudyTime: async (
+      yearId: number,
+      monthId: number,
+      options: AxiosRequestConfig = {}
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'yearId' is not null or undefined
+      assertParamExists('getOneMonthStudyTime', 'yearId', yearId);
+      // verify required parameter 'monthId' is not null or undefined
+      assertParamExists('getOneMonthStudyTime', 'monthId', monthId);
+      const localVarPath = `/one-month-study-times/{yearId}/{monthId}`
         .replace(`{${'yearId'}}`, encodeURIComponent(String(yearId)))
         .replace(`{${'monthId'}}`, encodeURIComponent(String(monthId)));
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -215,7 +297,7 @@ export const StudyingHourApiFp = function (configuration?: Configuration) {
   return {
     /**
      * Returns a single Month Studying Hour
-     * @summary Get Month Studying Hour by MonthId.
+     * @summary Get Month Studying Hour by yearId and MonthId.
      * @param {number} yearId year id
      * @param {number} monthId month id
      * @param {*} [options] Override http request option.
@@ -227,6 +309,26 @@ export const StudyingHourApiFp = function (configuration?: Configuration) {
       options?: AxiosRequestConfig
     ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MonthStudyingHour>> {
       const localVarAxiosArgs = await localVarAxiosParamCreator.getMonthStudyingHour(
+        yearId,
+        monthId,
+        options
+      );
+      return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+    },
+    /**
+     * Returns One Month Study Time
+     * @summary Get One Month Study Time by yearId and MonthId.
+     * @param {number} yearId year id
+     * @param {number} monthId month id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getOneMonthStudyTime(
+      yearId: number,
+      monthId: number,
+      options?: AxiosRequestConfig
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OneMonthStudyTime>> {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getOneMonthStudyTime(
         yearId,
         monthId,
         options
@@ -273,7 +375,7 @@ export const StudyingHourApiFactory = function (
   return {
     /**
      * Returns a single Month Studying Hour
-     * @summary Get Month Studying Hour by MonthId.
+     * @summary Get Month Studying Hour by yearId and MonthId.
      * @param {number} yearId year id
      * @param {number} monthId month id
      * @param {*} [options] Override http request option.
@@ -286,6 +388,23 @@ export const StudyingHourApiFactory = function (
     ): AxiosPromise<MonthStudyingHour> {
       return localVarFp
         .getMonthStudyingHour(yearId, monthId, options)
+        .then((request) => request(axios, basePath));
+    },
+    /**
+     * Returns One Month Study Time
+     * @summary Get One Month Study Time by yearId and MonthId.
+     * @param {number} yearId year id
+     * @param {number} monthId month id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getOneMonthStudyTime(
+      yearId: number,
+      monthId: number,
+      options?: any
+    ): AxiosPromise<OneMonthStudyTime> {
+      return localVarFp
+        .getOneMonthStudyTime(yearId, monthId, options)
         .then((request) => request(axios, basePath));
     },
     /**
@@ -318,7 +437,7 @@ export const StudyingHourApiFactory = function (
 export class StudyingHourApi extends BaseAPI {
   /**
    * Returns a single Month Studying Hour
-   * @summary Get Month Studying Hour by MonthId.
+   * @summary Get Month Studying Hour by yearId and MonthId.
    * @param {number} yearId year id
    * @param {number} monthId month id
    * @param {*} [options] Override http request option.
@@ -328,6 +447,21 @@ export class StudyingHourApi extends BaseAPI {
   public getMonthStudyingHour(yearId: number, monthId: number, options?: AxiosRequestConfig) {
     return StudyingHourApiFp(this.configuration)
       .getMonthStudyingHour(yearId, monthId, options)
+      .then((request) => request(this.axios, this.basePath));
+  }
+
+  /**
+   * Returns One Month Study Time
+   * @summary Get One Month Study Time by yearId and MonthId.
+   * @param {number} yearId year id
+   * @param {number} monthId month id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof StudyingHourApi
+   */
+  public getOneMonthStudyTime(yearId: number, monthId: number, options?: AxiosRequestConfig) {
+    return StudyingHourApiFp(this.configuration)
+      .getOneMonthStudyTime(yearId, monthId, options)
       .then((request) => request(this.axios, this.basePath));
   }
 
