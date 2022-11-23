@@ -25,7 +25,7 @@ paths:
       tags:
         - StudyingHour
       operationId: GetMonthStudyingHour
-      summary: Get Month Studying Hour by MonthId.
+      summary: Get Month Studying Hour by yearId and MonthId.
       description: Returns a single Month Studying Hour
       parameters:
         - name: yearId
@@ -62,6 +62,33 @@ paths:
               schema:
                   $ref: '#/components/schemas/TodayStudyingHour'
 
+  /one-month-study-times/{yearId}/{monthId}:
+    get:
+      tags:
+        - StudyingHour
+      operationId: GetOneMonthStudyTime
+      summary: Get One Month Study Time by yearId and MonthId.
+      description: Returns One Month Study Time
+      parameters:
+        - name: yearId
+          in: path
+          description: year id
+          required: true
+          schema:
+            type: integer
+        - name: monthId
+          in: path
+          description: month id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: One Month Study Time
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/OneMonthStudyTime'
 components:
   # securitySchemes:
   #   Bearer:
@@ -105,6 +132,19 @@ components:
         today_studying_hour:
           type: integer
           example: 3
+    OneMonthStudyTime:
+      type: array
+      items:
+        properties:
+          id:
+            type: integer
+            example: 1
+          date:
+            type: integer
+            example: 1
+          study_hour:
+            type: integer
+            example: 3
 tags:
   - name: StudyingHour
     description: Access to StudyingHour
