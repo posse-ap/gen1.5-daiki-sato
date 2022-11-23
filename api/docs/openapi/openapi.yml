@@ -140,7 +140,17 @@ components:
         oneMonthStudyTime:
           type: array
           items:
-            $ref: "#/components/schemas/TodayStudyingHour"
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              date:
+                type: integer
+                example: 1
+              study_hour:
+                type: integer
+                example: 3
 tags:
   - name: StudyingHour
     description: Access to StudyingHour
