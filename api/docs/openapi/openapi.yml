@@ -6,11 +6,13 @@ info:
 # security:
 #   - Bearer: []
 paths:
-  /total-studying-hours:
+  /total-studying-hours/{userId}:
     get:
       tags:
         - StudyingHour
       operationId: GetTotalStudyingHour
+      parameters:
+        - $ref: '#/components/parameters/UserId'
       summary: Get total studying hour.
       description: Returns total studying hour.
       responses:
@@ -20,7 +22,7 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/TotalStudyingHour'
-  /month-studying-hour/{yearId}/{monthId}:
+  /month-studying-hour/{userId}:
     get:
       tags:
         - StudyingHour
@@ -28,18 +30,9 @@ paths:
       summary: Get Month Studying Hour by yearId and MonthId.
       description: Returns a single Month Studying Hour
       parameters:
-        - name: yearId
-          in: path
-          description: year id
-          required: true
-          schema:
-            type: integer
-        - name: monthId
-          in: path
-          description: month id
-          required: true
-          schema:
-            type: integer
+        - $ref: '#/components/parameters/UserId'
+        - $ref: '#/components/parameters/YearId'
+        - $ref: '#/components/parameters/monthId'
       responses:
         '200':
           description: A single Month Studying Hour
@@ -47,13 +40,15 @@ paths:
             application/json:
               schema:
                   $ref: '#/components/schemas/MonthStudyingHour'
-  /today-sftudying-hours:
+  /today-studying-hours/{userId}:
     get:
       tags:
         - StudyingHour
       operationId: GetTodayStudyingHour
       summary: Get today studying hour.
       description: Returns today studying hour.
+      parameters:
+        - $ref: '#/components/parameters/UserId'
       responses:
         '200':
           description: A single today studying hour
@@ -62,7 +57,7 @@ paths:
               schema:
                   $ref: '#/components/schemas/TodayStudyingHour'
 
-  /one-month-study-times/{yearId}/{monthId}:
+  /one-month-study-times/{userId}:
     get:
       tags:
         - StudyingHour
@@ -70,18 +65,9 @@ paths:
       summary: Get One Month Study Time by yearId and MonthId.
       description: Returns One Month Study Time
       parameters:
-        - name: yearId
-          in: path
-          description: year id
-          required: true
-          schema:
-            type: integer
-        - name: monthId
-          in: path
-          description: month id
-          required: true
-          schema:
-            type: integer
+        - $ref: '#/components/parameters/UserId'
+        - $ref: '#/components/parameters/YearId'
+        - $ref: '#/components/parameters/monthId'
       responses:
         '200':
           description: One Month Study Time
@@ -95,6 +81,31 @@ components:
   #     type: http
   #     scheme: bearer
   #     description: Credentials or access token for API
+  parameters:
+    UserId:
+      name: user id
+      in: path
+      description: ユーザーを識別するID
+      required: true
+      schema:
+        type: integer
+        example: 1
+    YearId:
+      name: year id
+      in: query
+      required: true
+      description: 年を指定する
+      schema:
+        type: integer
+        example: 2022
+    monthId:
+      name: month id
+      in: query
+      required: true
+      description: 月を指定する
+      schema:
+        type: integer
+        example: 11
   schemas:
     TotalStudyingHour:
       type: object
