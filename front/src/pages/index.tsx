@@ -6,7 +6,7 @@ import VerticalBarChart from '@/components/organisms/VerticalBarChart';
 import { OneMonthStudyTimeInner, StudyingHourApi } from '@/generated/types/typescript-axios';
 import { MonthYearContext } from '@/layout/Layout';
 import { ApiConfig } from '@/utils/apiConfig';
-const Home: React.FC = () => {
+const index: React.FC = () => {
   const value = useContext(MonthYearContext);
   const yearId = value?.thisYear;
   const monthId = value?.thisMonth;
@@ -40,4 +40,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default index;
