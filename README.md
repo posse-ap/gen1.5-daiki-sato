@@ -1,5 +1,7 @@
-# 該当フェーズ
-- フェーズ◯
+## ブラウザに表示する手順
 
-# その他
-- LGTMと打ったら、自動でLGTM画像が生成されるようになっています
+
+1. ``cd server``
+2. /serverの箇所で、`yarn`
+3. `yarn start`
+4. Your application is running here: http://0.0.0.0:8080
