@@ -1,18 +1,4 @@
-![main](https://user-images.githubusercontent.com/2194433/188439641-87aaded7-bb33-406b-a489-e2a97a3bfa50.png)
 
-## 開発ルール
-
-[Wiki](https://github.com/Anti-Pattern-Inc/web-app-front/wiki/%E6%89%8D%E5%B9%B9%E6%9B%B8%E9%99%A2%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%83%89%E9%96%8B%E7%99%BA%E3%83%AB%E3%83%BC%E3%83%AB)参照
-
-## Libraries
-
-- [TypeScript](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html)
-- [Create React App](https://github.com/facebook/create-react-app).
-- [Material UI](https://mui.com/material-ui/getting-started/overview/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Sass](https://sass-lang.com/documentation/)
-- [React Router](https://reactrouter.com/en/main/getting-started/overview)
-- [Redux](https://redux.js.org/introduction/getting-started)
 
 ## Setup
 
